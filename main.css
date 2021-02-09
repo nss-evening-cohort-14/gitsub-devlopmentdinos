@@ -1,5 +1,5 @@
 body {
-  height: 100vh;
+  height: auto;
   width: 100%;
   padding: 10px;
   background-color: #ffebcd;
@@ -29,7 +29,7 @@ nav {
   justify-content: end;
 }
 .data-container {
-  height: 40%;
+  height: auto;
 }
 .form-container {
   height: 40%;
