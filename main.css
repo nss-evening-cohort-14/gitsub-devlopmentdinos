@@ -9,7 +9,7 @@ nav {
 }
 .master-container {
  width: 100%;
- height: 100%;
+ height: auto;
 }
 div {
   border: 2px solid red;
@@ -28,7 +28,7 @@ div {
   justify-content: end
 }
 .data-container {
-  height: 40%;
+  height: auto;
 }
 .form-container {
   height: 40%;
