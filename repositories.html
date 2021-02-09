@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="main.css" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repos</title>
+</head>
+<body>
+<div class="master-container d-flex flex-row flex-nowrap">
+  <div class="left-container">
+    <div class="profile-container">
+      <img
+        class="dino-logo img-fluid"
+        src="./dinoslogo.jpg"
+        alt="picture of a dinosaur"
+      />
+      <h3 class="h4">Dino Dinosaurus</h3>
+      <h5 class="text-muted">D1n0boi74</h5>
+      <p>
+        Coding since the paleolithic era. Avoiding meteorites. Father of 34.
+      </p>
+      <div class="btn-group">
+        <button class="btn btn-primary m-1" type="submit">Button</button>
+        <button class="btn btn-primary m-1" type="submit">Button</button>
+        <button class="btn btn-primary m-1" type="submit">Button</button>
+      </div>
+      <ul class="profile-links">
+        <li>
+          <img
+            class="icon-image"
+            src="/pushpin_1f4cc.png"
+            alt="icon"
+          />Location: Pangea
+        </li>
+        <li>
+          <img
+            class="icon-image"
+            src="/pushpin_1f4cc.png"
+            alt="icon"
+          />Location: Pangea
+        </li>
+        <li>
+          <img
+            class="icon-image"
+            src="/pushpin_1f4cc.png"
+            alt="icon"
+          />Location: Pangea
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="right-container">
+    <nav class="navbar m-3 text-light bg-dark">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="./index.html">Overview</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="./repositories.html">Repositories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./projects.html">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./packages.html">Packages</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="data-container m-3 d-flex flex-column flex-nowrap">
+      REPOS
+      <!-- Card classes for data containers to be utilized in JS Builders -->
+      <div class="card">
+        <div class="card-header">Repo Name</div>
+        <div class="card-body">
+          <p class="card-text">Repo Description</p>
+          <button type="button" class="btn btn-secondary">Repo Tag</button>
+          <button type="button" class="btn btn-secondary">Repo Tag</button>
+          <button type="button" class="btn btn-secondary">Repo Tag</button>
+        </div>
+        <hr />
+      </div>
+      <div class="card">
+        <div class="card-header">Repo Name</div>
+        <div class="card-body">
+          <p class="card-text">Repo Description</p>
+          <button type="button" class="btn btn-secondary">Repo Tag</button>
+          <button type="button" class="btn btn-secondary">Repo Tag</button>
+          <button type="button" class="btn btn-secondary">Repo Tag</button>
+        </div>
+        <hr />
+      </div>
+      <div class="card">
+        <div class="card-header">Repo Name</div>
+        <div class="card-body">
+          <p class="card-text">Repo Description</p>
+          <button type="button" class="btn btn-secondary">Repo Tag</button>
+          <button type="button" class="btn btn-secondary">Repo Tag</button>
+          <button type="button" class="btn btn-secondary">Repo Tag</button>
+        </div>
+        <hr />
+      </div>
+      <div class="card">
+        <div class="card-header">Repo Name</div>
+        <div class="card-body">
+          <p class="card-text">Repo Description</p>
+          <button type="button" class="btn btn-secondary">Repo Tag</button>
+          <button type="button" class="btn btn-secondary">Repo Tag</button>
+          <button type="button" class="btn btn-secondary">Repo Tag</button>
+        </div>
+        <hr />
+      </div>
+    </div>
+    <!-- Form to add new repo -->
+    <div class="form-container m-3">FORM
+      <form>
+        <div class="mb-3">
+          <h5>Create a new repository</h5>
+          <hr />
+          <label for="repoName" class="form-label">Repository Name</label>
+          <input type="text" class="form-control" id="repoName" aria-describedby="repoHelp" required>
+          <div id="repoHelp" class="form-text">Repository names should be short, yet descriptive!</div>
+        </div>
+        <div class="mb-3">
+          <label for="repoDescription" class="form-label">Description (optional)</label>
+          <input type="text" class="form-control" id="repoDescription">
+        </div>
+        <button type="submit" class="btn btn-primary">Create repository</button>
+      </form>
+    </div>
+  </div>
+</div>
+<footer>
+  <ul class="d-flex flex-row justify-content-evenly">
+    <li>&#169 Development Dinos 2021</li>
+    <li><a href="https://github.com/">GitHub</a></li>
+    <li><a href="https://github.com/nss-evening-cohort-14/gitsub-devlopmentdinos">Development Dino Repo</a></li>
+    <li><a href="https://github.com/nss-evening-cohort-14/gitsub-devlopmentdinos/blob/main/instructions.md">GutSub Instructions</a></li>
+    <li><a href="http://nashvillesoftwareschool.com/">Nashville Software School</a></li>
+  </ul>
+</footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+  </body>
+</html>
