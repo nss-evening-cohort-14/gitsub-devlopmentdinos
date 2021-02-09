@@ -132,7 +132,23 @@
       </div>
       <!-- Card End -->
     </div>
-    <div class="form-container m-3">FORM</div>
+    <!-- Form to add new repo -->
+    <div class="form-container m-3">FORM
+      <form>
+        <div class="mb-3">
+          <h5>Create a new repository</h5>
+          <hr />
+          <label for="repoName" class="form-label">Repository Name</label>
+          <input type="text" class="form-control" id="repoName" aria-describedby="repoHelp" required>
+          <div id="repoHelp" class="form-text">Repository names should be short, yet descriptive!</div>
+        </div>
+        <div class="mb-3">
+          <label for="repoDescription" class="form-label">Description (optional)</label>
+          <input type="text" class="form-control" id="repoDescription">
+        </div>
+        <button type="submit" class="btn btn-primary">Create repository</button>
+      </form>
+    </div>
   </div>
 </div>
 <footer>
