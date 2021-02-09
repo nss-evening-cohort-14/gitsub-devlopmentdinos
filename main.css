@@ -4,6 +4,7 @@ body {
   padding: 10px;
   background-color: #ffebcd;
 }
+/* Overview Page Start */
 nav {
   border: 2px solid red;
 }
@@ -40,7 +41,7 @@ nav {
 .btn-group {
   width: 100%;
 }
-.btn {
+.profile-btn {
   background-color: gray;
   width: 20%;
 }
@@ -57,3 +58,11 @@ nav {
   width: 10px;
   height: 10px;
 }
+#pinnedRepos {
+  padding: 50px;
+}
+.pinned-repo-card {
+  width: 40%;
+}
+
+/* Overview Page End */
