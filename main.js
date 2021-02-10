@@ -89,8 +89,7 @@ const projectBuilder = (array) => {
   array.forEach ((element) => {
     element.projects.forEach((arg) => {
       domString += `<div class="card mt-3">
-                    <div class="card">
-                      <div class="card-header">P${arg.projectName}</div>
+                      <div class="card-header">${arg.projectName}</div>
                       <div class="card-body">
                         <p class="card-text">${arg.projectDescription}</p>
                       </div>
@@ -133,6 +132,8 @@ const createPackage = (taco) => {
        printToDom('#packageCard', domString);
   });
 };
+// ********** END **********
+
 // Function to build list of pinned repositories and print to DOM
 const pinnedRepoBuilder = (array) => {
   let domString = '';
@@ -154,6 +155,31 @@ const pinnedRepoBuilder = (array) => {
 };
   
 // ********** END **********
+
+// Function build list of repos
+
+const repoBuilders = (user) => {
+  let domString = '';
+  user.forEach(element => {
+    element.repos.forEach(taco => {
+      domString += `<div class="card">
+      <div class="card-header">${taco.repoName}</div>
+      <div class="card-body">
+        <p class="card-text">${taco.repoDescription}</p>
+        <button type="button" class="btn btn-secondary">Repo Tag</button>
+        <button type="button" class="btn btn-secondary">Repo Tag</button>
+        <button type="button" class="btn btn-secondary">Repo Tag</button>
+      </div>
+    </div>
+    <hr />`
+    })
+    printToDom('#repoContainer', domString);
+  })
+  };
+// ********** END **********
+  
+
+// ***  Event Handlers *** //
 
 // Function to add pinned repos
 const getPinnedRepoFormInfo = (e) => {
@@ -177,21 +203,39 @@ const getPinnedRepoFormInfo = (e) => {
   form.reset();
 };
 
-// ***  Event Handlers *** //
+// Get Package Form Info
+// const packageForm = (e) => {
+//   e.preventDefault();
 
+//   const packName = document.querySelector('#package-form').value;
+//   const packDescription = document.querySelector('#option-package').value;
+  
+// const obj = {
+//   packName,
+//   packDescription,
+// };
 
+// users.push(obj);
+// // createPackage(users.packages);
+
+//   document.querySelector('#add-package').addEventListener('click', packageForm);
+//   document.querySelector('form-control').reset();
+// };
+// End Get Package Form Info
 // *** Event Listeners *** //
 
 
 // *** Initializers *** //
 const init = () => {
-if (window.location.pathname === "/packages.html") {
-  createPackage(users); 
-} else if (window.location.pathname === "/index.html") {
-  pinnedRepoBuilder(users);
-} else if (window.location.pathname === "/projects.html") {
-  projectBuilder(users);
+  if (window.location.pathname === "/packages.html") {
+    createPackage(users); 
+  } else if (window.location.pathname === "/index.html") {
+    pinnedRepoBuilder(users);
+  } else if (window.location.pathname === '/repositories.html') {
+    repoBuilders(users);
+  } else if (window.location.pathname === '/projects.html') {
+    projectBuilder(users);
+  } 
 }
-}; 
 
-init()
+init();
