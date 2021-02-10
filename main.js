@@ -35,6 +35,13 @@ function createPackage() {
   <hr />`
   })
 };
+
+const init = () => {
+  
+};
+
+init();
+
 // Create Package Card
 // *** Data Types *** //
 
