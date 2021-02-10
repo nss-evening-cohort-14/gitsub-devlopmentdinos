@@ -16,8 +16,8 @@ nav {
   border: 2px solid red;
 }
 .left-container {
-  width: 20%;
-  height: 100%;
+  width: 25%;
+  height:auto;
 }
 .profile-container {
   padding: 10px;
@@ -42,21 +42,24 @@ nav {
   width: 100%;
 }
 .profile-btn {
-  background-color: gray;
-  width: 20%;
+  background-color: rgb(68, 175, 149);
+  width: 10% !important;
 }
 .profile-links {
-  margin-top: 30px;
+  padding: 0;
+  margin: 30px 0 0 0;
+  height: 400px;
 }
 .profile-links li {
   list-style: none;
-  line-height: 1.5;
-  margin-left: -35px;
-  height: 20px;
+  margin: 0;
+  height: auto;
+  line-height: 2;
 }
 .icon-image {
-  width: 10px;
-  height: 10px;
+  margin: 0 10px;
+  width: 15px;
+  height: 15px;
 }
 #pinnedRepos {
   padding: 50px;
