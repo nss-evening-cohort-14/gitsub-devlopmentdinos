@@ -1,18 +1,25 @@
 console.log('CONNECTED!');
 
-
+// Get Package Form Info
 const packageForm = (e) => {
   e.preventDefault();
 
   const packageName = document.querySelector('#package-form').value;
   const packageDescription = document.querySelector('#option-package').value;
   
+const obj = {
+  packageName,
+  packageDescription,
+};
 
+users.push(obj);
+createPackage(users.packages);
 
   document.querySelector('form-control').reset();
-}
+};
+// Get Package Form Info
 
-
+// Create Package Card
 function createPackage() {
   let domString = "";
   users.forEach((element) => {
@@ -28,3 +35,20 @@ function createPackage() {
   <hr />`
   })
 };
+// Create Package Card
+// *** Data Types *** //
+
+
+// *** DOM Printer *** //
+
+
+// *** HTML Builder Functions *** //
+
+
+// ***  Event Handlers *** //
+
+
+// *** Event Listeners *** //
+
+
+// *** Initializers *** //
