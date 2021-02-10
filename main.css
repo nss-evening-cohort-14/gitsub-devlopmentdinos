@@ -64,5 +64,22 @@ nav {
 .pinned-repo-card {
   width: 40%;
 }
+.tag-checkboxes {
+  display: flex;
+  flex-direction: row;
+  max-height: 125px;
+}
+.form-check {
+  margin: 0 10px;
+  width: auto;
+}
+.checkbox-container {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+}
+.hidden {
+  display: none;
+}
 
 /* Overview Page End */
