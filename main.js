@@ -157,7 +157,6 @@ const pinnedRepoBuilder = (array) => {
     // Checks if a tag is empty/undefined and hides it if so
     const tag = document.querySelectorAll("button.tag");
     for(i = 0; i < tag.length; i++) {
-      console.log(tag[i].innerHTML);
       if (tag[i].innerHTML === typeof undefined) {
         tag[i].classList.add('hidden');
       }
