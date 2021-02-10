@@ -99,8 +99,32 @@ const pinnedRepoBuilder = (array) => {
   
 // ********** END **********
 
-// Function to add pinned repos
+// Function build list of repos
 
+const repoBuilders = (user) => {
+  let domString = '';
+  user.forEach(element => {
+    element.repos.forEach(taco => {
+      domString += `<div class="card">
+      <div class="card-header">${taco.repoName}</div>
+      <div class="card-body">
+        <p class="card-text">${taco.repoDescription}</p>
+        <button type="button" class="btn btn-secondary">Repo Tag</button>
+        <button type="button" class="btn btn-secondary">Repo Tag</button>
+        <button type="button" class="btn btn-secondary">Repo Tag</button>
+      </div>
+    </div>
+    <hr />`
+    })
+    printToDom('#repoContainer', domString);
+  })
+  };
+// ********** END **********
+  
+
+// ***  Event Handlers *** //
+
+// Function to add pinned repos
 const getPinnedRepoFormInfo = (e) => {
   e.preventDefault();
   
@@ -122,15 +146,16 @@ const getPinnedRepoFormInfo = (e) => {
   form.reset();
 };
 
-// ***  Event Handlers *** //
-
 
 // *** Event Listeners *** //
 
 
 // *** Initializers *** //
 const init = () => {
- pinnedRepoBuilder(users);
+if (window.location.pathname === '/index.html')
+pinnedRepoBuilder(users);
+else if (window.location.pathname === '/repositories.html')
+ repoBuilders(users);
 };
 
 init();
