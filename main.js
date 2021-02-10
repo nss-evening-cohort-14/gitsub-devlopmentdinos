@@ -202,6 +202,34 @@ const getPinnedRepoFormInfo = (e) => {
 
   form.reset();
 };
+// *** Function to gather Projects form info
+const getFormInfo = (e) => {
+  e.preventDefault();
+
+  const name = document.querySelector('#floatingName').value;
+
+  const obj = {
+    name,
+    house,
+    id,
+  };
+
+  const helpfulForm = () => {
+    let reminder = `<h6 class="text-white">Please type in a name.</h6>`;
+    printToDom('#reminderMessage', reminder);
+  }
+
+  if (name.length === 0) {
+      helpfulForm();
+  } else {
+    studentCards.push(obj);
+    printToDom('#reminderMessage', '');
+  }
+  cardBuilder(studentCards);
+  document.querySelector("form").reset();
+}
+
+
 
 // Get Package Form Info
 // const packageForm = (e) => {
