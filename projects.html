@@ -74,52 +74,22 @@
         </li>
       </ul>
     </nav>
-    <div class="data-container m-3 d-flex flex-column flex-nowrap">
-      REPOS
+    <div class="data-container m-3 d-flex flex-column flex-nowrap" id="projectCards"></div>
+      Projects
       <!-- Card classes for data containers to be utilized in JS Builders -->
-      <div class="card">
-        <div class="card-header">Project Name</div>
-        <div class="card-body">
-          <p class="card-text">Project Description</p>
-          <button type="button" class="btn btn-secondary">Repo Tag</button>
-        </div>
-      </div>
-      <hr />
-      <div class="card">
-        <div class="card-header">Project Name</div>
-        <div class="card-body">
-          <p class="card-text">Project Description</p>
-          <button type="button" class="btn btn-secondary">Repo Tag</button>
-        </div>
-      </div>
-      <hr />
-      <div class="card">
-        <div class="card-header">Project Name</div>
-        <div class="card-body">
-          <p class="card-text">Project Description</p>
-          <button type="button" class="btn btn-secondary">Repo Tag</button>
-        </div>
-      </div>
-      <hr />
-      <div class="card">
-        <div class="card-header">Repo Name</div>
-        <div class="card-body">
-          <p class="card-text">Repo Description</p>
-          <button type="button" class="btn btn-secondary">Repo Tag</button>
-        </div>
-      </div>
-      <hr />
-    </div>
+
     <div class="form-container m-3">
-      <div class="mb-3">
-        <label for="formGroupExampleInput" class="form-label">Project Board Name:</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Your name here">
-      </div>
-      <div class="mb-3">
-        <label for="formGroupExampleInput2" class="form-label">Project Description</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Your description here">
-      </div>
-      <button type="submit" class="btn btn-primary">Create Project</button>
+      <form id="projectsForm">
+        <div class="mb-3">
+          <label for="formGroupExampleInput" class="form-label">Project Board Name:</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Your name here">
+        </div>
+        <div class="mb-3">
+          <label for="formGroupExampleInput2" class="form-label">Project Description</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Your description here">
+        </div>
+        <button type="submit" class="btn btn-primary">Create Project</button>
+      </form>
     </div>
   </div>
 </div>

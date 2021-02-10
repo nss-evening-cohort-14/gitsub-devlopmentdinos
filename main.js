@@ -1,4 +1,3 @@
-
 // *** Data Types *** //
 const users = [ 
   {
@@ -32,20 +31,24 @@ const users = [
     projects: [
       {
         projectName: 'Project 1',
-        projectDescription: 'Description 1'
+        projectDescription: 'Fancy project'
       }, 
       {
         projectName: 'Project 2',
-        projectDescription: 'Description 2'
+        projectDescription: 'Fancier project'
       }, 
       {
         projectName: 'Project 3',
-        projectDescription: 'Description 3'
+        projectDescription: 'Fantastic project'
       }, 
       {
         projectName: 'Project 4',
-        projectDescription: 'Description 4'
+        projectDescription: 'Boss project'
       }, 
+      {
+        projectName: 'Project 5',
+        projectDescription: 'Awesome project'
+      },
     ],
     packages: [
       {
@@ -76,6 +79,40 @@ const printToDom = (divId, textToPrint) => {
 };
 
 // *** HTML Builder Functions *** //
+// Get Package Form Info
+// const packageForm = (e) => {
+//   e.preventDefault();
+
+// Function to build list of created projects and print to DOM
+const projectBuilder = (array) => {
+  let domString = '';
+  array.forEach ((element) => {
+    element.projects.forEach((arg) => {
+      domString += `<div class="card mt-3">
+                      <div class="card-header">${arg.projectName}</div>
+                      <div class="card-body">
+                        <p class="card-text">${arg.projectDescription}</p>
+                      </div>
+                    </div>`;
+    });
+    printToDom('#projectCards', domString);
+  });
+};
+//   const packName = document.querySelector('#package-form').value;
+//   const packDescription = document.querySelector('#option-package').value;
+  
+// const obj = {
+//   packName,
+//   packDescription,
+// };
+
+// users.push(obj);
+// // createPackage(users.packages);
+
+//   document.querySelector('#add-package').addEventListener('click', packageForm);
+//   document.querySelector('form-control').reset();
+// };
+// End Get Package Form Info
 
 // Create Package Card
 const createPackage = (taco) => {
@@ -196,6 +233,8 @@ const init = () => {
     pinnedRepoBuilder(users);
   } else if (window.location.pathname === '/repositories.html') {
     repoBuilders(users);
+  } else if (window.location.pathname === '/projects.html') {
+    projectBuilder(users);
   } 
 }
 
