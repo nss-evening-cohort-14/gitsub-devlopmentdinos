@@ -48,23 +48,23 @@ const users = [
     ],
     packages: [
       {
-        packageName: 'Package 1'
+        packageName: 'Package 1',
         packageDescription: 'Description 1'
       },
       {
-        packageName: 'Package 2'
+        packageName: 'Package 2',
         packageDescription: 'Description 2'
       },
       {
-        packageName: 'Package 3'
+        packageName: 'Package 3',
         packageDescription: 'Description 3'
       },
       {
-        packageName: 'Package 44'
+        packageName: 'Package 4',
         packageDescription: 'Description 4'
       },
     ]
-  }
+  },
 ]
 
 // *** DOM Printer *** //
