@@ -29,8 +29,22 @@ const pinnedRepoBuilder = (array) => {
 const getPinnedRepoFormInfo = (e) => {
   e.preventDefault();
   
-  const form = document.querySelector('form');
-  const name = document.querySelector('#name').value;
+  const form = document.querySelector('#pinnedReposForm');
+  const name = document.querySelector('#pinnedRepoName').value;
+  const description = document.querySelector('#pinnedReposDescription').value;
+  const pinned = true;
+
+  const obj = {
+    name,
+    description,
+    pinned,
+  };
+
+  users.push(obj);
+
+  pinnedRepoBuilder(users.repos);
+
+  form.reset();
 };
 
 // ***  Event Handlers *** //
