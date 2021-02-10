@@ -6,7 +6,7 @@ const users = [
       {
       repoName: 'Repo 1',
       repoDescription: 'Repo Description',
-      repoTags: ['Tag 1', 'Tag 2', 'Tag 3'],
+      repoTags: ['Tag 2', 'Tag 3'],
       isPinned: true
     },
     {
@@ -138,19 +138,32 @@ const createPackage = (taco) => {
 const pinnedRepoBuilder = (array) => {
   let domString = '';
   array.forEach((element) => {
-    element.repos.forEach((arg) => {
+    element.repos.forEach((arg, i) => {
       if (arg.isPinned) {
         domString += ` <div class="card pinned-repo-card mt-4">
                           <div class="card-header">${arg.repoName}</div>
                           <div class="card-body">
                            <p class="card-text">${arg.repoDescription}</p>
-                           <button type="button" class="btn btn-secondary">Repo Tag</button>
+                           <button type="button" class="btn btn-secondary tag">${arg.repoTags[0]}</button>
+                           <button type="button" class="btn btn-secondary tag">${arg.repoTags[1]}</button>
+                           <button type="button" class="btn btn-secondary tag">${arg.repoTags[2]}</button>
                         </div>
                       </div>
                       `;
       } 
     });
     printToDom('#pinnedRepos', domString);
+   
+    // Checks if a tag is empty/undefined and hides it if so
+    const tag = document.querySelectorAll("button.tag");
+    for(i = 0; i < tag.length; i++) {
+      console.log(tag[i].innerHTML);
+      if (tag[i].innerHTML === typeof undefined) {
+        tag[i].classList.add('hidden');
+      }
+      
+    }
+    
   });
 };
   
@@ -184,21 +197,29 @@ const repoBuilders = (user) => {
 // Function to add pinned repos
 const getPinnedRepoFormInfo = (e) => {
   e.preventDefault();
-  
+    const checkBoxes = [];
+    const markedCheckbox = document.querySelectorAll('input[type="checkbox"]:checked');
+    
+    for (let checkbox of markedCheckbox) {
+        checkBoxes.push(checkbox.value);
+    }
+
   const form = document.querySelector('#pinnedReposForm');
-  const name = document.querySelector('#pinnedRepoName').value;
-  const description = document.querySelector('#pinnedReposDescription').value;
-  const pinned = true;
+  const repoName = document.querySelector('#pinnedRepoName').value;
+  const repoDescription = document.querySelector('#pinnedReposDescription').value;
+  const repoTags = checkBoxes;
+  const isPinned = true;
 
   const obj = {
-    name,
-    description,
-    pinned,
+    repoName,
+    repoDescription,
+    repoTags,
+    isPinned,
   };
 
-  users.push(obj);
-
-  // pinnedRepoBuilder(users.repos);
+  users[0].repos.push(obj);
+  
+  pinnedRepoBuilder(users);
 
   form.reset();
 };
@@ -223,10 +244,13 @@ const getPinnedRepoFormInfo = (e) => {
 // };
 // End Get Package Form Info
 // *** Event Listeners *** //
-
+const handleButtonEvents = () => {
+  document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
+};
 
 // *** Initializers *** //
 const init = () => {
+  handleButtonEvents();
   if (window.location.pathname === "/packages.html") {
     createPackage(users); 
   } else if (window.location.pathname === "/index.html") {
@@ -236,6 +260,6 @@ const init = () => {
   } else if (window.location.pathname === '/projects.html') {
     projectBuilder(users);
   } 
-}
+};
 
 init();
