@@ -251,15 +251,15 @@ const handleButtonEvents = () => {
 // *** Initializers *** //
 const init = () => {
   handleButtonEvents();
-  if (window.location.pathname === "/packages.html") {
-    createPackage(users); 
-  } else if (window.location.pathname === "/index.html") {
-    pinnedRepoBuilder(users);
-  } else if (window.location.pathname === '/repositories.html') {
+    if (window.location.pathname === "/packages.html") {
+    createPackage(users);
+    } else if (window.location.pathname === "/repositories.html") {
     repoBuilders(users);
-  } else if (window.location.pathname === '/projects.html') {
+    } else if (window.location.pathname === '/projects.html') {
     projectBuilder(users);
-  } 
-};
+    } else {
+    pinnedRepoBuilder(users);
+    }
+  };
 
 init();
