@@ -152,10 +152,12 @@ const getPinnedRepoFormInfo = (e) => {
 
 // *** Initializers *** //
 const init = () => {
-if (window.location.pathname === '/index.html')
+if (window.location.pathname === '/index.html') {
 pinnedRepoBuilder(users);
-else if (window.location.pathname === '/repositories.html')
+}
+else if (window.location.pathname === '/repositories.html') {
  repoBuilders(users);
+}
 };
 
 init();
