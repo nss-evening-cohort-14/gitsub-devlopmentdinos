@@ -223,6 +223,33 @@ const getPinnedRepoFormInfo = (e) => {
   form.reset();
 };
 
+// Function to submit new Repo Form 
+const newRepoForm = (e) => {
+  e.preventDefault();
+  console.log('Welcome to the machine')
+
+  const repoName = document.querySelector('#repoName').value;
+  const repoDescription = document.querySelector('#repoDescription').value;
+  const repoTags = ['Test'];
+  const isPinned = false;
+
+  // Store form data in obj
+
+  const repoObj = {
+    repoName,
+    repoDescription,
+    repoTags,
+    isPinned
+  }
+  users[0].repos.push(repoObj);
+
+  // Re-render the repos on DOM //
+  repoBuilders(users);
+
+  // Reset the form //
+  document.querySelector('form').reset();
+}
+
 // Get Package Form Info
 // const packageForm = (e) => {
 //   e.preventDefault();
@@ -243,11 +270,14 @@ const getPinnedRepoFormInfo = (e) => {
 // };
 // End Get Package Form Info
 // *** Event Listeners *** //
-
-  const handleButtonEvents = () => {
-    document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
-  };
-
+  // Index Event Listener //
+const handleButtonEventsIndex = () => {
+  document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
+};
+  // Repos Event Listener //
+const handleButtonEventsRepos = () => {
+  document.querySelector('#reposForm').addEventListener('submit', newRepoForm)
+};  
 
 // *** Initializers *** //
 const init = () => {
@@ -255,11 +285,12 @@ const init = () => {
     createPackage(users);
     } else if (window.location.pathname === "/repositories.html") {
     repoBuilders(users);
+    handleButtonEventsRepos();
     } else if (window.location.pathname === '/projects.html') {
     projectBuilder(users);
     } else {
     pinnedRepoBuilder(users);
-    handleButtonEvents();
+    handleButtonEventsIndex();
     }
   };
 
