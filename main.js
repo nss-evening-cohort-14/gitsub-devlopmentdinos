@@ -1,3 +1,12 @@
+
+// *** Data Types *** //
+
+
+// *** DOM Printer *** //
+
+
+// *** HTML Builder Functions *** //
+
 // Function to build list of pinned repositories and print to DOM
 const pinnedRepoBuilder = (array) => {
   let domString = '';
@@ -21,4 +30,13 @@ const getPinnedRepoFormInfo = (e) => {
   e.preventDefault();
   
   const form = document.querySelector('form');
+  const name = document.querySelector('#name').value;
 };
+
+// ***  Event Handlers *** //
+
+
+// *** Event Listeners *** //
+
+
+// *** Initializers *** //
