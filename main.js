@@ -84,3 +84,8 @@ const printToDom = (divId, textToPrint) => {
 
 
 // *** Initializers *** //
+const init = () => {
+
+}
+
+init();
