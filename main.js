@@ -244,13 +244,14 @@ const getPinnedRepoFormInfo = (e) => {
 // };
 // End Get Package Form Info
 // *** Event Listeners *** //
-const handleButtonEvents = () => {
-  document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
-};
+
+  const handleButtonEvents = () => {
+    document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
+  };
+
 
 // *** Initializers *** //
 const init = () => {
-  handleButtonEvents();
     if (window.location.pathname === "/packages.html") {
     createPackage(users);
     } else if (window.location.pathname === "/repositories.html") {
@@ -259,6 +260,7 @@ const init = () => {
     projectBuilder(users);
     } else {
     pinnedRepoBuilder(users);
+    handleButtonEvents();
     }
   };
 
