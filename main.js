@@ -226,7 +226,6 @@ const getPinnedRepoFormInfo = (e) => {
 // Function to submit new Repo Form 
 const newRepoForm = (e) => {
   e.preventDefault();
-  console.log('Welcome to the machine')
 
   const repoName = document.querySelector('#repoName').value;
   const repoDescription = document.querySelector('#repoDescription').value;
