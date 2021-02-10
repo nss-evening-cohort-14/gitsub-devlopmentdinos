@@ -1,4 +1,3 @@
-console.log('CONNECTED!');
 
 // *** Data Types *** //
 const users = [ 
@@ -67,55 +66,99 @@ const users = [
       },
     ]
   },
-]
+];
 
 // *** DOM Printer *** //
 const printToDom = (divId, textToPrint) => {
   const selectedDiv = document.querySelector(divId);
   selectedDiv.innerHTML = textToPrint;
 
-}
+};
 
 // *** HTML Builder Functions *** //
 // Get Package Form Info
-const packageForm = (e) => {
-  e.preventDefault();
+// const packageForm = (e) => {
+//   e.preventDefault();
 
-  const packName = document.querySelector('#package-form').value;
-  const packDescription = document.querySelector('#option-package').value;
+//   const packName = document.querySelector('#package-form').value;
+//   const packDescription = document.querySelector('#option-package').value;
   
-const obj = {
-  packName,
-  packDescription,
-};
+// const obj = {
+//   packName,
+//   packDescription,
+// };
 
-users.push(obj);
-createPackage(users.packages);
+// users.push(obj);
+// // createPackage(users.packages);
 
-  document.querySelector('#add-package').addEventListener('click', packageForm);
-  document.querySelector('form-control').reset();
-};
+//   document.querySelector('#add-package').addEventListener('click', packageForm);
+//   document.querySelector('form-control').reset();
+// };
 // End Get Package Form Info
 
 // Create Package Card
 const createPackage = (taco) => {
   let domString = "";
   taco.forEach((element) => {
-    element.packages.forEach((arg) => {
-    domString += `<div class="card border-dark mb-3" style="width: 25rem">
-    <div class="card-header">Package Name</div>
-    <div class="text">${arg.packageName}</div>
-    <div class="card-body">
-      <p class="card-text">Package Description</p>
-      <div class="text">${arg.packageDescription}</div>
-      <button type="button" class="btn btn-secondary">Delete</button>
-    </div>
-  </div>
-  <hr />`
-      });
-      printToDom('#package-card', domString);
+      element.packages.forEach((arg) => {
+      domString += `<div class="card border-dark mb-3" style="width: 25rem">
+                       <div class="card-header">Package Name</div>
+                       <div class="text">${arg.packageName}</div>
+                       <div class="card-body">
+                       <p class="card-text">Package Description</p>
+                       <div class="text">${arg.packageDescription}</div>
+                       <button type="button" class="btn btn-secondary">Delete</button>
+                    </div>
+                    </div>`
+                    
+                    
+    });
+       printToDom('#packageCard', domString);
   });
+};
+// Function to build list of pinned repositories and print to DOM
+const pinnedRepoBuilder = (array) => {
+  let domString = '';
+  array.forEach((element) => {
+    element.repos.forEach((arg) => {
+      if (arg.isPinned) {
+        domString += ` <div class="card pinned-repo-card mt-4">
+                          <div class="card-header">${arg.repoName}</div>
+                          <div class="card-body">
+                           <p class="card-text">${arg.repoDescription}</p>
+                           <button type="button" class="btn btn-secondary">Repo Tag</button>
+                        </div>
+                      </div>
+                      `;
+      } 
+    });
+    printToDom('#pinnedRepos', domString);
+  });
+};
+  
+// ********** END **********
 
+// Function to add pinned repos
+
+const getPinnedRepoFormInfo = (e) => {
+  e.preventDefault();
+  
+  const form = document.querySelector('#pinnedReposForm');
+  const name = document.querySelector('#pinnedRepoName').value;
+  const description = document.querySelector('#pinnedReposDescription').value;
+  const pinned = true;
+
+  const obj = {
+    name,
+    description,
+    pinned,
+  };
+
+  users.push(obj);
+
+  // pinnedRepoBuilder(users.repos);
+
+  form.reset();
 };
 
 // ***  Event Handlers *** //
@@ -126,7 +169,11 @@ const createPackage = (taco) => {
 
 // *** Initializers *** //
 const init = () => {
-
+if (window.location.pathname === "/packages.html") {
+  createPackage(users); 
+} else if (window.location.pathname === "/index.html") {
+  pinnedRepoBuilder(users);
 }
+}; 
 
-init();
+init()
