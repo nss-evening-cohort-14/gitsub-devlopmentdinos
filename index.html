@@ -76,77 +76,22 @@
     </nav>
     <h3 class="text-center">Pinned Repositories</h3>
     <div class="data-container m-3 d-flex flex-row flex-wrap justify-content-lg-evenly" id="pinnedRepos">
-      <!-- Card classes for data containers to be utilized in JS Builders -->
-            <!-- Card Start -->
-            <div class="card pinned-repo-card mt-4">
-              <div class="card-header">Repo Name</div>
-              <div class="card-body">
-                <p class="card-text">Repo Description</p>
-                <button type="button" class="btn btn-secondary">Repo Tag</button>
-              </div>
-            </div>
-            <!-- Card End -->
-                  <!-- Card Start -->
-      <div class="card pinned-repo-card mt-4">
-        <div class="card-header">Repo Name</div>
-        <div class="card-body">
-          <p class="card-text">Repo Description</p>
-          <button type="button" class="btn btn-secondary">Repo Tag</button>
-        </div>
-      </div>
-      <!-- Card End -->
-            <!-- Card Start -->
-            <div class="card pinned-repo-card mt-4">
-              <div class="card-header">Repo Name</div>
-              <div class="card-body">
-                <p class="card-text">Repo Description</p>
-                <button type="button" class="btn btn-secondary">Repo Tag</button>
-              </div>
-            </div>
-            <!-- Card End -->
-      <!-- Card Start -->
-      <div class="card pinned-repo-card mt-4">
-        <div class="card-header">Repo Name</div>
-        <div class="card-body">
-          <p class="card-text">Repo Description</p>
-          <button type="button" class="btn btn-secondary">Repo Tag</button>
-        </div>
-      </div>
-      <!-- Card End -->
-            <!-- Card Start -->
-            <div class="card pinned-repo-card mt-4">
-              <div class="card-header">Repo Name</div>
-              <div class="card-body">
-                <p class="card-text">Repo Description</p>
-                <button type="button" class="btn btn-secondary">Repo Tag</button>
-              </div>
-            </div>
-            <!-- Card End -->
-                  <!-- Card Start -->
-      <div class="card pinned-repo-card mt-4">
-        <div class="card-header">Repo Name</div>
-        <div class="card-body">
-          <p class="card-text">Repo Description</p>
-          <button type="button" class="btn btn-secondary">Repo Tag</button>
-        </div>
-      </div>
-      <!-- Card End -->
     </div>
     <!-- Form to add new repo -->
     <div class="form-container m-3">FORM
-      <form>
+      <form id="pinnedReposForm">
         <div class="mb-3">
-          <h5>Create a new repository</h5>
+          <h5>Create a pinned repo</h5>
           <hr />
           <label for="repoName" class="form-label">Repository Name</label>
-          <input type="text" class="form-control" id="repoName" aria-describedby="repoHelp" required>
+          <input type="text" class="form-control" id="pinnedRepoName" aria-describedby="repoHelp" required>
           <div id="repoHelp" class="form-text">Repository names should be short, yet descriptive!</div>
         </div>
         <div class="mb-3">
-          <label for="repoDescription" class="form-label">Description (optional)</label>
-          <input type="text" class="form-control" id="repoDescription">
+          <label for="pinnedReposDescription" class="form-label">Description</label>
+          <input type="text" class="form-control" id="pinnedReposDescription">
         </div>
-        <button type="submit" class="btn btn-primary">Create repository</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
   </div>
