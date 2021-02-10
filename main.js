@@ -56,7 +56,7 @@ const users = [
         packageDescription: 'Description 1'
       },
       {
-        packageName: 'Package 2',
+        packageName: 'Hello Kitty 2',
         packageDescription: 'Description 2'
       },
       {
@@ -65,7 +65,7 @@ const users = [
       },
       {
         packageName: 'Package 4',
-        packageDescription: 'Description 4'
+        packageDescription: 'JAVA'
       },
     ]
   },
@@ -98,21 +98,6 @@ const projectBuilder = (array) => {
     printToDom('#projectCards', domString);
   });
 };
-//   const packName = document.querySelector('#package-form').value;
-//   const packDescription = document.querySelector('#option-package').value;
-  
-// const obj = {
-//   packName,
-//   packDescription,
-// };
-
-// users.push(obj);
-// // createPackage(users.packages);
-
-//   document.querySelector('#add-package').addEventListener('click', packageForm);
-//   document.querySelector('form-control').reset();
-// };
-// End Get Package Form Info
 
 // Create Package Card
 const createPackage = (taco) => {
@@ -126,8 +111,6 @@ const createPackage = (taco) => {
                        <button type="button" class="btn btn-secondary">Delete</button>
                        </div>
                     </div>`
-                    
-                    
     });
        printToDom('#packageCard', domString);
   });
@@ -157,7 +140,6 @@ const pinnedRepoBuilder = (array) => {
     // Checks if a tag is empty/undefined and hides it if so
     const tag = document.querySelectorAll("button.tag");
     for(i = 0; i < tag.length; i++) {
-      console.log(tag[i].innerHTML);
       if (tag[i].innerHTML === typeof undefined) {
         tag[i].classList.add('hidden');
       }
@@ -227,32 +209,38 @@ const getPinnedRepoFormInfo = (e) => {
 // Get Package Form Info
 const packageForm = (e) => {
   e.preventDefault();
-
-  const packName = document.querySelector('#package-form').value;
-  const packDescription = document.querySelector('#option-package').value;
+  
+  const packageName = document.querySelector('#package-add').value;
+  const packageDescription = document.querySelector('#option-package').value;
   
 const obj = {
-  packName,
-  packDescription,
+  packageName,
+  packageDescription,
 };
 
-users.packages.push(obj);
+users[0].packages.push(obj);
 
-createPackage();
+createPackage(users);
 
-  document.querySelector('form-control').reset();
+  document.querySelector('#package-form').reset();
 };
+
 // End Get Package Form Info
 // *** Event Listeners *** //
-const handleButtonEvents = () => {
-  document.querySelector('#pinnedReposForm').addEventListener('submit', getPinnedRepoFormInfo);
-  document.querySelector('#add-package').addEventListener('click', packageForm);
-};
+
+  const handleButtonEvents = () => {
+    document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
+  };
+
+  const handleButtonPackages = () => {
+    document.querySelector('#add-package').addEventListener('click', packageForm);
+  };
+
 
 // *** Initializers *** //
 const init = () => {
-  handleButtonEvents();
     if (window.location.pathname === "/packages.html") {
+    handleButtonPackages();
     createPackage(users);
     } else if (window.location.pathname === "/repositories.html") {
     repoBuilders(users);
