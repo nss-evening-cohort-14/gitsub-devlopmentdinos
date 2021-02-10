@@ -77,6 +77,26 @@ const printToDom = (divId, textToPrint) => {
 
 // *** HTML Builder Functions *** //
 
+// Create Package Card
+const createPackage = (taco) => {
+  let domString = "";
+  taco.forEach((element) => {
+      element.packages.forEach((arg) => {
+      domString += `<div class="card border-dark mb-3" style="width: 25rem">
+                       <div class="card-header">${arg.packageName}</div>
+                       <div class="card-body">
+                       <p class="card-text">${arg.packageDescription}</p>
+                       <button type="button" class="btn btn-secondary">Delete</button>
+                       </div>
+                    </div>`
+                    
+                    
+    });
+       printToDom('#packageCard', domString);
+  });
+};
+// ********** END **********
+
 // Function to build list of pinned repositories and print to DOM
 const pinnedRepoBuilder = (array) => {
   let domString = '';
@@ -141,23 +161,42 @@ const getPinnedRepoFormInfo = (e) => {
 
   users.push(obj);
 
-  pinnedRepoBuilder(users.repos);
+  // pinnedRepoBuilder(users.repos);
 
   form.reset();
 };
 
+// Get Package Form Info
+// const packageForm = (e) => {
+//   e.preventDefault();
 
+//   const packName = document.querySelector('#package-form').value;
+//   const packDescription = document.querySelector('#option-package').value;
+  
+// const obj = {
+//   packName,
+//   packDescription,
+// };
+
+// users.push(obj);
+// // createPackage(users.packages);
+
+//   document.querySelector('#add-package').addEventListener('click', packageForm);
+//   document.querySelector('form-control').reset();
+// };
+// End Get Package Form Info
 // *** Event Listeners *** //
 
 
 // *** Initializers *** //
 const init = () => {
-if (window.location.pathname === '/index.html') {
-pinnedRepoBuilder(users);
+  if (window.location.pathname === "/packages.html") {
+    createPackage(users); 
+  } else if (window.location.pathname === "/index.html") {
+    pinnedRepoBuilder(users);
+  } else if (window.location.pathname === '/repositories.html') {
+    repoBuilders(users);
+  } 
 }
-else if (window.location.pathname === '/repositories.html') {
- repoBuilders(users);
-}
-};
 
 init();
