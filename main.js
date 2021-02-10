@@ -66,32 +66,37 @@ const users = [
       },
     ]
   },
-]
+];
 
 // *** DOM Printer *** //
 const printToDom = (divId, textToPrint) => {
   const selectedDiv = document.querySelector(divId);
   selectedDiv.innerHTML = textToPrint;
 
-}
+};
 
 // *** HTML Builder Functions *** //
 
 // Function to build list of pinned repositories and print to DOM
 const pinnedRepoBuilder = (array) => {
   let domString = '';
-  array.forEach((element, i) => {
-    domString += ` <div class="card pinned-repo-card mt-4">
-                      <div class="card-header">Repo Name</div>
-                      <div class="card-body">
-                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit repellendus quae fugit, perferendis dignissimos repudiandae consequuntur soluta similique expedita excepturi molestiae eaque adipisci, fuga sapiente facere doloremque eius laudantium maiores.</p>
-                         <button type="button" class="btn btn-secondary">Repo Tag</button>
+  array.forEach((element) => {
+    element.repos.forEach((arg) => {
+      if (arg.isPinned) {
+        domString += ` <div class="card pinned-repo-card mt-4">
+                          <div class="card-header">${arg.repoName}</div>
+                          <div class="card-body">
+                           <p class="card-text">${arg.repoDescription}</p>
+                           <button type="button" class="btn btn-secondary">Repo Tag</button>
+                        </div>
                       </div>
-                    </div>
-                          `;
+                      `;
+      } 
+    });
+    printToDom('#pinnedRepos', domString);
   });
-  printToDom('#pinnedRepos', domString);
 };
+  
 // ********** END **********
 
 // Function to add pinned repos
@@ -125,7 +130,7 @@ const getPinnedRepoFormInfo = (e) => {
 
 // *** Initializers *** //
 const init = () => {
-
-}
+ pinnedRepoBuilder(users);
+};
 
 init();
