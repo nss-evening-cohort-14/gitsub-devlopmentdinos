@@ -225,27 +225,28 @@ const getPinnedRepoFormInfo = (e) => {
 };
 
 // Get Package Form Info
-// const packageForm = (e) => {
-//   e.preventDefault();
+const packageForm = (e) => {
+  e.preventDefault();
 
-//   const packName = document.querySelector('#package-form').value;
-//   const packDescription = document.querySelector('#option-package').value;
+  const packName = document.querySelector('#package-form').value;
+  const packDescription = document.querySelector('#option-package').value;
   
-// const obj = {
-//   packName,
-//   packDescription,
-// };
+const obj = {
+  packName,
+  packDescription,
+};
 
-// users.push(obj);
-// // createPackage(users.packages);
+users.packages.push(obj);
 
-//   document.querySelector('#add-package').addEventListener('click', packageForm);
-//   document.querySelector('form-control').reset();
-// };
+createPackage();
+
+  document.querySelector('form-control').reset();
+};
 // End Get Package Form Info
 // *** Event Listeners *** //
 const handleButtonEvents = () => {
-  document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
+  document.querySelector('#pinnedReposForm').addEventListener('submit', getPinnedRepoFormInfo);
+  document.querySelector('#add-package').addEventListener('click', packageForm);
 };
 
 // *** Initializers *** //
@@ -259,6 +260,7 @@ const init = () => {
     projectBuilder(users);
     } else {
     pinnedRepoBuilder(users);
+    handleButtonEvents();
     }
   };
 
