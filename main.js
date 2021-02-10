@@ -31,20 +31,24 @@ const users = [
     projects: [
       {
         projectName: 'Project 1',
-        projectDescription: 'Description 1'
+        projectDescription: 'Fancy project'
       }, 
       {
         projectName: 'Project 2',
-        projectDescription: 'Description 2'
+        projectDescription: 'Fancier project'
       }, 
       {
         projectName: 'Project 3',
-        projectDescription: 'Description 3'
+        projectDescription: 'Fantastic project'
       }, 
       {
         projectName: 'Project 4',
-        projectDescription: 'Description 4'
+        projectDescription: 'Boss project'
       }, 
+      {
+        projectName: 'Project 5',
+        projectDescription: 'Awesome project'
+      },
     ],
     packages: [
       {
@@ -65,31 +69,75 @@ const users = [
       },
     ]
   },
-]
+];
 
 // *** DOM Printer *** //
 const printToDom = (divId, textToPrint) => {
   const selectedDiv = document.querySelector(divId);
   selectedDiv.innerHTML = textToPrint;
 
-}
+};
 
 // *** HTML Builder Functions *** //
+
+// Function to build list of created projects and print to DOM
 const projectBuilder = (array) => {
   let domString = '';
-
-array.forEach ((element) => {
-  domString += `<div class="card text-center my-2" style="width: 14rem;" id=${i}>
-        <img src="${element.crestImgUrl}" class="card-img-top object-fit: contain" alt="Hogwarts House Crest">
-        <div class="card-body">
-          <h4 class="card-title">${element.house}</h4>
-          <h5 class="card-student">${element.name}</h5>
-          <p class="card-attributes">${element.attribute}</p>
-          <button type="button" id=${taco[i].id} class="btn btn-primary">Expel</button>
-        </div>
-      </div>`;
+  array.forEach ((element) => {
+    element.projects.forEach((arg) => {
+      domString += `<div class="card mt-3">
+                    <div class="card">
+                      <div class="card-header">P${arg.projectName}</div>
+                      <div class="card-body">
+                        <p class="card-text">${arg.projectDescription}</p>
+                      </div>
+                    </div>`;
+    })
+    printToDom('#projectCards', domString);
   });
-  printToDom('#student-cards', domString);
+};
+// Function to build list of pinned repositories and print to DOM
+const pinnedRepoBuilder = (array) => {
+  let domString = '';
+  array.forEach((element) => {
+    element.repos.forEach((arg) => {
+      if (arg.isPinned) {
+        domString += ` <div class="card pinned-repo-card mt-4">
+                          <div class="card-header">${arg.repoName}</div>
+                          <div class="card-body">
+                           <p class="card-text">${arg.repoDescription}</p>
+                           <button type="button" class="btn btn-secondary">Repo Tag</button>
+                        </div>
+                      </div>
+                      `;
+      } 
+    });
+    printToDom('#pinnedRepos', domString);
+  });
+};
+  
+// ********** END **********
+
+// Function to add pinned repos
+const getPinnedRepoFormInfo = (e) => {
+  e.preventDefault();
+  
+  const form = document.querySelector('#pinnedReposForm');
+  const name = document.querySelector('#pinnedRepoName').value;
+  const description = document.querySelector('#pinnedReposDescription').value;
+  const pinned = true;
+
+  const obj = {
+    name,
+    description,
+    pinned,
+  };
+
+  users.push(obj);
+
+  pinnedRepoBuilder(users.repos);
+
+  form.reset();
 };
 
 // ***  Event Handlers *** //
@@ -100,7 +148,8 @@ array.forEach ((element) => {
 
 // *** Initializers *** //
 const init = () => {
-
-}
+ pinnedRepoBuilder(users);
+ projectBuilder(users);
+};
 
 init();
