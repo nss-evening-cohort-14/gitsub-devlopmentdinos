@@ -102,13 +102,11 @@ const createPackage = (taco) => {
   taco.forEach((element) => {
       element.packages.forEach((arg) => {
       domString += `<div class="card border-dark mb-3" style="width: 25rem">
-                       <div class="card-header">Package Name</div>
-                       <div class="text">${arg.packageName}</div>
+                       <div class="card-header">${arg.packageName}</div>
                        <div class="card-body">
-                       <p class="card-text">Package Description</p>
-                       <div class="text">${arg.packageDescription}</div>
+                       <p class="card-text">${arg.packageDescription}</p>
                        <button type="button" class="btn btn-secondary">Delete</button>
-                    </div>
+                       </div>
                     </div>`
                     
                     
