@@ -157,7 +157,6 @@ const pinnedRepoBuilder = (array) => {
     // Checks if a tag is empty/undefined and hides it if so
     const tag = document.querySelectorAll("button.tag");
     for(i = 0; i < tag.length; i++) {
-      console.log(tag[i].innerHTML);
       if (tag[i].innerHTML === typeof undefined) {
         tag[i].classList.add('hidden');
       }
@@ -244,13 +243,14 @@ const getPinnedRepoFormInfo = (e) => {
 // };
 // End Get Package Form Info
 // *** Event Listeners *** //
-const handleButtonEvents = () => {
-  document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
-};
+
+  const handleButtonEvents = () => {
+    document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
+  };
+
 
 // *** Initializers *** //
 const init = () => {
-  handleButtonEvents();
     if (window.location.pathname === "/packages.html") {
     createPackage(users);
     } else if (window.location.pathname === "/repositories.html") {
@@ -259,6 +259,7 @@ const init = () => {
     projectBuilder(users);
     } else {
     pinnedRepoBuilder(users);
+    handleButtonEvents();
     }
   };
 
