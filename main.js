@@ -239,12 +239,12 @@ const packageForm = (e) => {
   const packageName = document.querySelector('#package-add').value;
   const packageDescription = document.querySelector('#option-package').value;
   
-const obj = {
+const packObj = {
   packageName,
   packageDescription,
 };
 
-users[0].packages.push(obj);
+users[0].packages.push(packObj);
 
 createPackage(users);
 
