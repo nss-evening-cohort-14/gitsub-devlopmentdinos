@@ -16,45 +16,7 @@
 <body>
 <div class="master-container d-flex flex-row flex-nowrap">
   <div class="left-container">
-    <div class="profile-container">
-      <img
-        class="dino-logo img-fluid"
-        src="./dinoslogo.jpg"
-        alt="picture of a dinosaur"
-      />
-      <h3 class="h4">Dino Dinosaurus</h3>
-      <h5 class="text-muted">D1n0boi74</h5>
-      <p>
-        Coding since the paleolithic era. Avoiding meteorites. Father of 34.
-      </p>
-      <div class="btn-group">
-        <button class="btn btn-primary m-1" type="submit">Button</button>
-        <button class="btn btn-primary m-1" type="submit">Button</button>
-        <button class="btn btn-primary m-1" type="submit">Button</button>
-      </div>
-      <ul class="profile-links">
-        <li>
-          <img
-            class="icon-image"
-            src="/pushpin_1f4cc.png"
-            alt="icon"
-          />Location: Pangea
-        </li>
-        <li>
-          <img
-            class="icon-image"
-            src="/pushpin_1f4cc.png"
-            alt="icon"
-          />Location: Pangea
-        </li>
-        <li>
-          <img
-            class="icon-image"
-            src="/pushpin_1f4cc.png"
-            alt="icon"
-          />Location: Pangea
-        </li>
-      </ul>
+    <div class="profile-container bg-dark" id="profile-container">
     </div>
   </div>
   <div class="right-container">
@@ -82,11 +44,11 @@
       <form id="projectsForm">
         <div class="mb-3">
           <label for="formGroupExampleInput" class="form-label">Project Board Name:</label>
-          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Your name here">
+          <input type="text" class="form-control" id="projectName" placeholder="Your project name here" required>
         </div>
         <div class="mb-3">
           <label for="formGroupExampleInput2" class="form-label">Project Description</label>
-          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Your description here">
+          <input type="text" class="form-control" id="projectDescription" placeholder="Your description here" required>
         </div>
         <button type="submit" class="btn btn-primary">Create Project</button>
       </form>

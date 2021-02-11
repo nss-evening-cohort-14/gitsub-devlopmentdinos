@@ -16,10 +16,12 @@ nav {
   border: 2px solid red;
 }
 .left-container {
-  width: 20%;
-  height: 100%;
+  width: 25%;
+  height:auto;
 }
 .profile-container {
+  margin: 16px 0;
+  color: #fafafafa;
   padding: 10px;
   height: 100%;
   width: 100%;
@@ -30,6 +32,7 @@ nav {
   justify-content: end;
 }
 .data-container {
+  padding: 0 !important;
   height: auto;
 }
 .form-container {
@@ -42,27 +45,30 @@ nav {
   width: 100%;
 }
 .profile-btn {
-  background-color: gray;
-  width: 20%;
+  background-color: rgb(68, 175, 149);
+  width: 10% !important;
 }
 .profile-links {
-  margin-top: 30px;
+  padding: 0;
+  margin: 30px 0 0 0;
+  height: auto;
 }
 .profile-links li {
   list-style: none;
-  line-height: 1.5;
-  margin-left: -35px;
-  height: 20px;
+  margin: 0;
+  height: auto;
+  line-height: 2;
 }
 .icon-image {
-  width: 10px;
-  height: 10px;
+  margin: 0 10px;
+  width: 15px;
+  height: 15px;
 }
 #pinnedRepos {
   padding: 50px;
 }
 .pinned-repo-card {
-  width: 40%;
+  width: 48%;
 }
 .tag-checkboxes {
   display: flex;
@@ -83,3 +89,6 @@ nav {
 }
 
 /* Overview Page End */
+footer {
+  margin: 40px 0;
+}
