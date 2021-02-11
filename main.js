@@ -301,13 +301,10 @@ const init = () => {
     profileCardBuilder();
     } else if (window.location.pathname === "/repositories.html") {
     repoBuilders(users);
-    profileCardBuilder();
     } else if (window.location.pathname === '/projects.html') {
     projectBuilder(users);
-    profileCardBuilder();
     } else {
     pinnedRepoBuilder(users);
-    profileCardBuilder();
     }
   };
 
