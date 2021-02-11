@@ -157,7 +157,6 @@ const pinnedRepoBuilder = (array) => {
     // Checks if a tag is empty/undefined and hides it if so
     const tag = document.querySelectorAll("button.tag");
     for(i = 0; i < tag.length; i++) {
-      console.log(tag[i].innerHTML);
       if (tag[i].innerHTML === typeof undefined) {
         tag[i].classList.add('hidden');
       }
@@ -242,6 +241,32 @@ const getProjectsFormInfo = (e) => {
 
 
 
+// Function to submit new Repo Form 
+const newRepoForm = (e) => {
+  e.preventDefault();
+
+  const repoName = document.querySelector('#repoName').value;
+  const repoDescription = document.querySelector('#repoDescription').value;
+  const repoTags = ['Test'];
+  const isPinned = false;
+
+  // Store form data in obj
+
+  const repoObj = {
+    repoName,
+    repoDescription,
+    repoTags,
+    isPinned
+  }
+  users[0].repos.push(repoObj);
+
+  // Re-render the repos on DOM //
+  repoBuilders(users);
+
+  // Reset the form //
+  document.querySelector('form').reset();
+}
+
 // Get Package Form Info
 // const packageForm = (e) => {
 //   e.preventDefault();
@@ -262,9 +287,14 @@ const getProjectsFormInfo = (e) => {
 // };
 // End Get Package Form Info
 // *** Event Listeners *** //
+  // Index Event Listener //
 const handleButtonEventsIndex = () => {
   document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
 };
+  // Repos Event Listener //
+const handleButtonEventsRepos = () => {
+  document.querySelector('#reposForm').addEventListener('submit', newRepoForm)
+};  
 
 const handleButtonEventsProjects = () => {
   document.querySelector('#projectsForm').addEventListener('submit', getProjectsFormInfo);
@@ -275,6 +305,7 @@ const init = () => {
     createPackage(users);
     } else if (window.location.pathname === "/repositories.html") {
     repoBuilders(users);
+    handleButtonEventsRepos();
     } else if (window.location.pathname === '/projects.html') {
     projectBuilder(users);
     handleButtonEventsProjects();
