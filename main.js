@@ -4,24 +4,28 @@ const users = [
     userName: 'Dino Dinosaurus',
     repos: [
       {
+      repoId: 0,
       repoName: 'Repo 1',
       repoDescription: 'Repo Description',
       repoTags: ['Tag 2', 'Tag 3'],
       isPinned: true
     },
     {
+      repoId: 1,
       repoName: 'Repo 2',
       repoDescription: '2nd Description',
       repoTags: ['Tag Button 1', 'Tag Button 2'],
       isPinned: true
     },
     {
+      repoId: 2,
       repoName: 'Repo 3',
       repoDescription: '3rd descript',
       repoTags: ['Tag 1', 'Tag 2'],
       isPinned: false
     },
     {
+      repoId: 3,
       repoName: 'Repo 4',
       repoDescription: '4th descript',
       repoTags: ['Tag 1', 'Tag 2'],
@@ -70,7 +74,7 @@ const users = [
     ]
   },
 ];
-
+const pinnedReposArr = [];
 // *** DOM Printer *** //
 const printToDom = (divId, textToPrint) => {
   const selectedDiv = document.querySelector(divId);
@@ -168,13 +172,15 @@ const pinnedRepoBuilder = (array) => {
   array.forEach((element) => {
     element.repos.forEach((arg, i) => {
       if (arg.isPinned) {
-        domString += ` <div class="card pinned-repo-card mt-4">
-                          <div class="card-header">${arg.repoName}</div>
+        // console.log(i);
+        console.log(`Card ID is ${i}`);
+        domString += ` <div class="card pinned-repo-card mt-4" id="${i}">
+                          <div class="card-header d-flex pinned-repo-card-header">${arg.repoName} <button type="submit" class="btn btn-outline-danger delete-btn" id="${i}">X</button></div>
                           <div class="card-body">
                            <p class="card-text">${arg.repoDescription}</p>
-                           <button type="button" class="btn btn-secondary tag">${arg.repoTags[0]}</button>
-                           <button type="button" class="btn btn-secondary tag">${arg.repoTags[1]}</button>
-                           <button type="button" class="btn btn-secondary tag">${arg.repoTags[2]}</button>
+                           <button type="" class="btn btn-secondary tag">${arg.repoTags[0]}</button>
+                           <button type="" class="btn btn-secondary tag">${arg.repoTags[1]}</button>
+                           <button type="" class="btn btn-secondary tag">${arg.repoTags[2]}</button>
                         </div>
                       </div>
                       `;
@@ -227,7 +233,17 @@ const repoBuilders = (user) => {
   
 
 // ***  Event Handlers *** //
-
+const deletePinnedRepo = (e) => {
+  const targetType = e.target.type;
+  let targetId = e.target.id;
+  console.log(targetId);
+  console.log(users[0].repos[targetId]);
+  if (targetType === 'submit') {
+    users[0].repos.splice(targetId, 1);
+    pinnedRepoBuilder(users);
+  }
+  
+};
 // Function to add pinned repos
 const getPinnedRepoFormInfo = (e) => {
   e.preventDefault();
@@ -237,14 +253,22 @@ const getPinnedRepoFormInfo = (e) => {
     for (let checkbox of markedCheckbox) {
         checkBoxes.push(checkbox.value);
     }
-
+  const getRepoId = () => {
+    if (users[0].repos.length-1 === -1) {
+      return 0;
+    } else {
+      return users[0].repos.length-1; 
+    }
+  };
   const form = document.querySelector('#pinnedReposForm');
+  const repoId = getRepoId();
   const repoName = document.querySelector('#pinnedRepoName').value;
   const repoDescription = document.querySelector('#pinnedReposDescription').value;
   const repoTags = checkBoxes;
   const isPinned = true;
 
   const obj = {
+    repoId,
     repoName,
     repoDescription,
     repoTags,
@@ -331,6 +355,7 @@ createPackage(users);
 
   // Index Event Listener //
 const handleButtonEventsIndex = () => {
+  document.querySelector('#pinnedRepos').addEventListener('click', deletePinnedRepo);
   document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
 };
   // Repos Event Listener //
