@@ -224,31 +224,21 @@ const getPinnedRepoFormInfo = (e) => {
   form.reset();
 };
 // *** Function to gather Projects form info
-const getFormInfo = (e) => {
+const getProjectsFormInfo = (e) => {
   e.preventDefault();
 
-  const name = document.querySelector('#floatingName').value;
+  const projectName = document.querySelector('#projectName').value;
+  const projectDescription = document.querySelector('#projectDescription').value;
 
   const obj = {
-    name,
-    house,
-    id,
+    projectName,
+    projectDescription,
   };
 
-  const helpfulForm = () => {
-    let reminder = `<h6 class="text-white">Please type in a name.</h6>`;
-    printToDom('#reminderMessage', reminder);
-  }
-
-  if (name.length === 0) {
-      helpfulForm();
-  } else {
-    studentCards.push(obj);
-    printToDom('#reminderMessage', '');
-  }
-  cardBuilder(studentCards);
-  document.querySelector("form").reset();
-}
+  users[0].projects.push(obj);
+  projectBuilder(users);
+  document.querySelector("#projectsForm").reset();
+};
 
 
 
@@ -272,21 +262,25 @@ const getFormInfo = (e) => {
 // };
 // End Get Package Form Info
 // *** Event Listeners *** //
-const handleButtonEvents = () => {
+const handleButtonEventsIndex = () => {
   document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
 };
 
+const handleButtonEventsProjects = () => {
+  document.querySelector('#projectsForm').addEventListener('submit', getProjectsFormInfo);
+};
 // *** Initializers *** //
 const init = () => {
-  handleButtonEvents();
     if (window.location.pathname === "/packages.html") {
     createPackage(users);
     } else if (window.location.pathname === "/repositories.html") {
     repoBuilders(users);
     } else if (window.location.pathname === '/projects.html') {
     projectBuilder(users);
+    handleButtonEventsProjects();
     } else {
     pinnedRepoBuilder(users);
+    handleButtonEventsIndex();
     }
   };
 
