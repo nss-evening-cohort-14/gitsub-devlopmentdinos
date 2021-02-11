@@ -331,11 +331,14 @@ const init = () => {
     } else if (window.location.pathname === "/repositories.html") {
     repoBuilders(users);
     handleButtonEventsRepos();
+    profileCardBuilder();
     } else if (window.location.pathname === '/projects.html') {
     projectBuilder(users);
+    profileCardBuilder();
     } else {
     pinnedRepoBuilder(users);
     handleButtonEventsIndex();
+    profileCardBuilder();
     }
   };
 

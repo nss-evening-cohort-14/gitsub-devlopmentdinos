@@ -25,6 +25,9 @@ nav {
   padding: 10px;
   height: 100%;
   width: 100%;
+  animation-name: spinboi;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
 }
 .right-container {
   width: 100%;
@@ -89,3 +92,11 @@ nav {
 }
 
 /* Overview Page End */
+footer {
+  margin: 40px 0;
+}
+
+@keyframes spinboi {
+  0% {transform: skewX(20deg);}
+  100% {transform: skewX(180deg);}
+}
