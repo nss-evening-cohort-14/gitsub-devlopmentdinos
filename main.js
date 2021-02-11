@@ -159,7 +159,7 @@ const createPackage = (taco) => {
                        <p class="card-text">${arg.packageDescription}</p>
                        <button type="button" class="btn btn-secondary">Delete</button>
                        </div>
-                    </div>`
+                    </div>`;
     });
        printToDom('#packageCard', domString);
   });
@@ -172,15 +172,14 @@ const pinnedRepoBuilder = (array) => {
   array.forEach((element) => {
     element.repos.forEach((arg, i) => {
       if (arg.isPinned) {
-        // console.log(i);
         console.log(`Card ID is ${i}`);
         domString += ` <div class="card pinned-repo-card mt-4" id="${i}">
                           <div class="card-header d-flex pinned-repo-card-header">${arg.repoName} <button type="submit" class="btn btn-outline-danger delete-btn" id="${i}">X</button></div>
                           <div class="card-body">
                            <p class="card-text">${arg.repoDescription}</p>
-                           <button type="" class="btn btn-secondary tag">${arg.repoTags[0]}</button>
-                           <button type="" class="btn btn-secondary tag">${arg.repoTags[1]}</button>
-                           <button type="" class="btn btn-secondary tag">${arg.repoTags[2]}</button>
+                           <button type="button" class="btn btn-secondary tag">${arg.repoTags[0]}</button>
+                           <button type="button" class="btn btn-secondary tag">${arg.repoTags[1]}</button>
+                           <button type="button" class="btn btn-secondary tag">${arg.repoTags[2]}</button>
                         </div>
                       </div>
                       `;
@@ -194,9 +193,10 @@ const pinnedRepoBuilder = (array) => {
       if (tag[i].innerHTML === typeof undefined) {
         tag[i].classList.add('hidden');
       }
-      
     }
-    
+    if (document.querySelector('#pinnedRepos').innerHTML === '') {
+      document.querySelector('#pinnedRepos').innerHTML = 'You have no pinned repositories.';
+    }
   });
 };
   
@@ -217,8 +217,8 @@ const repoBuilders = (user) => {
         <button type="button" class="btn btn-secondary tag">${taco.repoTags[2]}</button>
       </div>
     </div>
-    <hr />`
-    })
+    <hr />`;
+    });
     printToDom('#repoContainer', domString);
 
     const repoTag = document.querySelectorAll("button.tag");
@@ -227,7 +227,7 @@ const repoBuilders = (user) => {
         repoTag[i].classList.add('hidden');
       }
     }
-  })
+  });
   };
 // ********** END **********
   
@@ -236,8 +236,6 @@ const repoBuilders = (user) => {
 const deletePinnedRepo = (e) => {
   const targetType = e.target.type;
   let targetId = e.target.id;
-  console.log(targetId);
-  console.log(users[0].repos[targetId]);
   if (targetType === 'submit') {
     users[0].repos.splice(targetId, 1);
     pinnedRepoBuilder(users);
@@ -253,22 +251,13 @@ const getPinnedRepoFormInfo = (e) => {
     for (let checkbox of markedCheckbox) {
         checkBoxes.push(checkbox.value);
     }
-  const getRepoId = () => {
-    if (users[0].repos.length-1 === -1) {
-      return 0;
-    } else {
-      return users[0].repos.length-1; 
-    }
-  };
   const form = document.querySelector('#pinnedReposForm');
-  const repoId = getRepoId();
   const repoName = document.querySelector('#pinnedRepoName').value;
   const repoDescription = document.querySelector('#pinnedReposDescription').value;
   const repoTags = checkBoxes;
   const isPinned = true;
 
   const obj = {
-    repoId,
     repoName,
     repoDescription,
     repoTags,
@@ -316,7 +305,7 @@ const newRepoForm = (e) => {
     repoDescription,
     repoTags,
     isPinned
-  }
+  };
   users[0].repos.push(repoObj);
 
   // Re-render the repos on DOM //
@@ -324,7 +313,7 @@ const newRepoForm = (e) => {
 
   // Reset the form //
   document.querySelector('form').reset();
-}
+};
 
 // Get Package Form Info
 const packageForm = (e) => {
@@ -360,7 +349,7 @@ const handleButtonEventsIndex = () => {
 };
   // Repos Event Listener //
 const handleButtonEventsRepos = () => {
-  document.querySelector('#reposForm').addEventListener('submit', newRepoForm)
+  document.querySelector('#reposForm').addEventListener('submit', newRepoForm);
 };  
 
 const handleButtonEventsProjects = () => {
