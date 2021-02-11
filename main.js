@@ -206,14 +206,21 @@ const repoBuilders = (user) => {
       <div class="card-header">${taco.repoName}</div>
       <div class="card-body">
         <p class="card-text">${taco.repoDescription}</p>
-        <button type="button" class="btn btn-secondary">Repo Tag</button>
-        <button type="button" class="btn btn-secondary">Repo Tag</button>
-        <button type="button" class="btn btn-secondary">Repo Tag</button>
+        <button type="button" class="btn btn-secondary tag">${taco.repoTags[0]}</button>
+        <button type="button" class="btn btn-secondary tag">${taco.repoTags[1]}</button>
+        <button type="button" class="btn btn-secondary tag">${taco.repoTags[2]}</button>
       </div>
     </div>
     <hr />`
     })
     printToDom('#repoContainer', domString);
+
+    const repoTag = document.querySelectorAll("button.tag");
+    for (let i=0; i < repoTag.length; i++) {
+      if (repoTag[i].innerHTML === typeof undefined) {
+        repoTag[i].classList.add('hidden');
+      }
+    }
   })
   };
 // ********** END **********
