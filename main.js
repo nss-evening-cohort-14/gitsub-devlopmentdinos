@@ -56,7 +56,7 @@ const users = [
         packageDescription: 'Description 1'
       },
       {
-        packageName: 'Hello Kitty 2',
+        packageName: 'Package 2',
         packageDescription: 'Description 2'
       },
       {
@@ -65,7 +65,7 @@ const users = [
       },
       {
         packageName: 'Package 4',
-        packageDescription: 'JAVA'
+        packageDescription: 'Description 4'
       },
     ]
   },
@@ -206,6 +206,32 @@ const getPinnedRepoFormInfo = (e) => {
   form.reset();
 };
 
+// Function to submit new Repo Form 
+const newRepoForm = (e) => {
+  e.preventDefault();
+
+  const repoName = document.querySelector('#repoName').value;
+  const repoDescription = document.querySelector('#repoDescription').value;
+  const repoTags = ['Test'];
+  const isPinned = false;
+
+  // Store form data in obj
+
+  const repoObj = {
+    repoName,
+    repoDescription,
+    repoTags,
+    isPinned
+  }
+  users[0].repos.push(repoObj);
+
+  // Re-render the repos on DOM //
+  repoBuilders(users);
+
+  // Reset the form //
+  document.querySelector('form').reset();
+}
+
 // Get Package Form Info
 const packageForm = (e) => {
   e.preventDefault();
@@ -224,31 +250,37 @@ createPackage(users);
 
   document.querySelector('#package-form').reset();
 };
-
 // End Get Package Form Info
+
 // *** Event Listeners *** //
 
-  const handleButtonEvents = () => {
-    document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
-  };
-
+// Package Event Listener
   const handleButtonPackages = () => {
-    document.querySelector('#add-package').addEventListener('click', packageForm);
+    document.querySelector('#package-form').addEventListener('submit', packageForm);
   };
 
+  // Index Event Listener //
+const handleButtonEventsIndex = () => {
+  document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
+};
+  // Repos Event Listener //
+const handleButtonEventsRepos = () => {
+  document.querySelector('#reposForm').addEventListener('submit', newRepoForm)
+};  
 
 // *** Initializers *** //
 const init = () => {
     if (window.location.pathname === "/packages.html") {
-    handleButtonPackages();
     createPackage(users);
+    handleButtonPackages();
     } else if (window.location.pathname === "/repositories.html") {
     repoBuilders(users);
+    handleButtonEventsRepos();
     } else if (window.location.pathname === '/projects.html') {
     projectBuilder(users);
     } else {
     pinnedRepoBuilder(users);
-    handleButtonEvents();
+    handleButtonEventsIndex();
     }
   };
 
