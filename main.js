@@ -143,21 +143,6 @@ const profileCardBuilder = () => {
   `;
   printToDom('#profile-container', domString);
 };
-//   const packName = document.querySelector('#package-form').value;
-//   const packDescription = document.querySelector('#option-package').value;
-  
-// const obj = {
-//   packName,
-//   packDescription,
-// };
-
-// users.push(obj);
-// // createPackage(users.packages);
-
-//   document.querySelector('#add-package').addEventListener('click', packageForm);
-//   document.querySelector('form-control').reset();
-// };
-// End Get Package Form Info
 
 // Create Package Card
 const createPackage = (taco) => {
@@ -171,8 +156,6 @@ const createPackage = (taco) => {
                        <button type="button" class="btn btn-secondary">Delete</button>
                        </div>
                     </div>`
-                    
-                    
     });
        printToDom('#packageCard', domString);
   });
@@ -313,25 +296,32 @@ const newRepoForm = (e) => {
 }
 
 // Get Package Form Info
-// const packageForm = (e) => {
-//   e.preventDefault();
-
-//   const packName = document.querySelector('#package-form').value;
-//   const packDescription = document.querySelector('#option-package').value;
+const packageForm = (e) => {
+  e.preventDefault();
   
-// const obj = {
-//   packName,
-//   packDescription,
-// };
+  const packageName = document.querySelector('#package-add').value;
+  const packageDescription = document.querySelector('#option-package').value;
+  
+const packObj = {
+  packageName,
+  packageDescription,
+};
 
-// users.push(obj);
-// // createPackage(users.packages);
+users[0].packages.push(packObj);
 
-//   document.querySelector('#add-package').addEventListener('click', packageForm);
-//   document.querySelector('form-control').reset();
-// };
+createPackage(users);
+
+  document.querySelector('#package-form').reset();
+};
 // End Get Package Form Info
+
 // *** Event Listeners *** //
+
+// Package Event Listener
+  const handleButtonPackages = () => {
+    document.querySelector('#package-form').addEventListener('submit', packageForm);
+  };
+
   // Index Event Listener //
 const handleButtonEventsIndex = () => {
   document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
@@ -348,6 +338,7 @@ const handleButtonEventsProjects = () => {
 const init = () => {
     if (window.location.pathname === "/packages.html") {
     createPackage(users);
+    handleButtonPackages();
     profileCardBuilder();
     } else if (window.location.pathname === "/repositories.html") {
     repoBuilders(users);
