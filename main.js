@@ -267,6 +267,24 @@ const getPinnedRepoFormInfo = (e) => {
 
   form.reset();
 };
+// *** Function to gather Projects form info
+const getProjectsFormInfo = (e) => {
+  e.preventDefault();
+
+  const projectName = document.querySelector('#projectName').value;
+  const projectDescription = document.querySelector('#projectDescription').value;
+
+  const obj = {
+    projectName,
+    projectDescription,
+  };
+
+  users[0].projects.push(obj);
+  projectBuilder(users);
+  document.querySelector("#projectsForm").reset();
+};
+
+
 
 // Function to submit new Repo Form 
 const newRepoForm = (e) => {
@@ -323,6 +341,9 @@ const handleButtonEventsRepos = () => {
   document.querySelector('#reposForm').addEventListener('submit', newRepoForm)
 };  
 
+const handleButtonEventsProjects = () => {
+  document.querySelector('#projectsForm').addEventListener('submit', getProjectsFormInfo);
+};
 // *** Initializers *** //
 const init = () => {
     if (window.location.pathname === "/packages.html") {
@@ -334,6 +355,7 @@ const init = () => {
     profileCardBuilder();
     } else if (window.location.pathname === '/projects.html') {
     projectBuilder(users);
+    handleButtonEventsProjects();
     profileCardBuilder();
     } else {
     pinnedRepoBuilder(users);
