@@ -202,7 +202,6 @@ const pinnedRepoBuilder = (array) => {
     // Checks if a tag is empty/undefined and hides it if so
     const tag = document.querySelectorAll("button.tag");
     for(i = 0; i < tag.length; i++) {
-      console.log(tag[i].innerHTML);
       if (tag[i].innerHTML === typeof undefined) {
         tag[i].classList.add('hidden');
       }
@@ -269,6 +268,32 @@ const getPinnedRepoFormInfo = (e) => {
   form.reset();
 };
 
+// Function to submit new Repo Form 
+const newRepoForm = (e) => {
+  e.preventDefault();
+
+  const repoName = document.querySelector('#repoName').value;
+  const repoDescription = document.querySelector('#repoDescription').value;
+  const repoTags = ['Test'];
+  const isPinned = false;
+
+  // Store form data in obj
+
+  const repoObj = {
+    repoName,
+    repoDescription,
+    repoTags,
+    isPinned
+  }
+  users[0].repos.push(repoObj);
+
+  // Re-render the repos on DOM //
+  repoBuilders(users);
+
+  // Reset the form //
+  document.querySelector('form').reset();
+}
+
 // Get Package Form Info
 // const packageForm = (e) => {
 //   e.preventDefault();
@@ -289,22 +314,28 @@ const getPinnedRepoFormInfo = (e) => {
 // };
 // End Get Package Form Info
 // *** Event Listeners *** //
-const handleButtonEvents = () => {
+  // Index Event Listener //
+const handleButtonEventsIndex = () => {
   document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
 };
+  // Repos Event Listener //
+const handleButtonEventsRepos = () => {
+  document.querySelector('#reposForm').addEventListener('submit', newRepoForm)
+};  
 
 // *** Initializers *** //
 const init = () => {
-  handleButtonEvents();
     if (window.location.pathname === "/packages.html") {
     createPackage(users);
     profileCardBuilder();
     } else if (window.location.pathname === "/repositories.html") {
     repoBuilders(users);
+    handleButtonEventsRepos();
     } else if (window.location.pathname === '/projects.html') {
     projectBuilder(users);
     } else {
     pinnedRepoBuilder(users);
+    handleButtonEventsIndex();
     }
   };
 
