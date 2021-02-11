@@ -98,6 +98,51 @@ const projectBuilder = (array) => {
     printToDom('#projectCards', domString);
   });
 };
+// Profile Builder function
+const profileCardBuilder = () => {
+  let domString = `
+  <img
+  class="dino-logo img-fluid"
+  src="./dinoslogo.jpg"
+  alt="picture of a dinosaur"
+/>
+<h3 class="h4">Dino Dinosaurus</h3>
+<h5 class="text-muted">D1n0boi74</h5>
+<p>
+  Coding since the paleolithic era. Avoiding meteorites. Father of 34.
+</p>
+<div class="btn-group">
+  <button class="btn btn-primary m-1 profile-btn" type="submit">Follow</button>
+  <button class="btn btn-primary m-1 profile-btn" type="submit">Share</button>
+  <button class="btn btn-primary m-1 profile-btn" type="submit">Like</button>
+</div>
+<ul class="profile-links">
+  <li>
+    <img
+      class="icon-image"
+      src="./iconfinder_location_115718.png"
+      alt=""
+    />Pangea, Earth
+  </li>
+  <li>
+    <img
+      class="icon-image"
+      src="./iconfinder_mail_115714.png"
+      alt=""
+    />D1n0boi74@paleogeographic.mail
+  </li>
+  <li>
+    <img
+      class="icon-image"
+      src="./iconfinder_Dinosaur_367624.png"
+      alt=""
+    />Genus: Tyrannosaurus
+  </li>
+</ul>
+
+  `;
+  printToDom('#profile-container', domString);
+};
 //   const packName = document.querySelector('#package-form').value;
 //   const packDescription = document.querySelector('#option-package').value;
   
@@ -282,14 +327,18 @@ const handleButtonEventsRepos = () => {
 const init = () => {
     if (window.location.pathname === "/packages.html") {
     createPackage(users);
+    profileCardBuilder();
     } else if (window.location.pathname === "/repositories.html") {
     repoBuilders(users);
     handleButtonEventsRepos();
+    profileCardBuilder();
     } else if (window.location.pathname === '/projects.html') {
     projectBuilder(users);
+    profileCardBuilder();
     } else {
     pinnedRepoBuilder(users);
     handleButtonEventsIndex();
+    profileCardBuilder();
     }
   };
 
