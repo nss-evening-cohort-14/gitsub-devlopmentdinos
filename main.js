@@ -147,13 +147,13 @@ const profileCardBuilder = () => {
 // Create Package Card
 const createPackage = (taco) => {
   let domString = "";
-  taco.forEach((element) => {
+  taco.forEach((element, i) => {
       element.packages.forEach((arg) => {
-      domString += `<div class="card border-dark mb-3" style="width: 25rem">
+      domString += `<div class="card border-dark mb-3" id="${i}" style="width: 25rem">
                        <div class="card-header">${arg.packageName}</div>
                        <div class="card-body">
                        <p class="card-text">${arg.packageDescription}</p>
-                       <button type="button" class="btn btn-secondary">Delete</button>
+                       <button type="button" id="package-delete" class="btn btn-secondary">Delete</button>
                        </div>
                     </div>`
     });
@@ -322,11 +322,24 @@ createPackage(users);
 };
 // End Get Package Form Info
 
+// Delete Package
+const deletePackage = (e) => {
+ const targetType = e.target.type;
+ const targetId = e.target.id;
+ 
+ if (targetType === "button") {
+    users[0].packages.splice(targetId, 1);
+    createPackage(users);
+ }
+
+};
+
 // *** Event Listeners *** //
 
 // Package Event Listener
   const handleButtonPackages = () => {
     document.querySelector('#package-form').addEventListener('submit', packageForm);
+    document.querySelector('#package-delete').addEventListener('click', deletePackage);
   };
 
   // Index Event Listener //
