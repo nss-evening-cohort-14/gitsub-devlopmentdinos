@@ -17,7 +17,7 @@ nav {
 }
 .left-container {
   width: 25%;
-  height:auto;
+  height: auto;
 }
 .profile-container {
   margin: 16px 0;
@@ -39,7 +39,10 @@ nav {
   height: 40%;
 }
 .dino-logo {
+  height: 250px;
+  width: 300px;
   border-radius: 50%;
+  margin: 20px 0 30px 28px;
 }
 .btn-group {
   width: 100%;
@@ -89,6 +92,24 @@ nav {
 }
 .delete-btn {
   margin-left: auto;
+}
+.about-me {
+  border-radius: 5px;
+  border: 1px darkslategrey solid;
+}
+.aboutme-bottom {
+  width: 60%;
+}
+a {
+  text-decoration: none;
+}
+.aboutme-background-image-container {
+  border: solid 1px red;
+  width: 100%;
+  height: 20em;
+  background-image: url("./hunter_v1.0.jpg");
+  background-position: right;
+  background-repeat: no-repeat;
 }
 /* Overview Page End */
 footer {
