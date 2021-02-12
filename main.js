@@ -263,13 +263,17 @@ const getProjectsFormInfo = (e) => {
 
   const projectName = document.querySelector('#projectName').value;
   const projectDescription = document.querySelector('#projectDescription').value;
-
-  const obj = {
+ 
+  const projectsObj = {
     projectName,
     projectDescription,
   };
 
-  users[0].projects.push(obj);
+  if (projectDescription.length === 0) {
+    projectsObj.projectDescription = 'No description';
+  };
+  
+  users[0].projects.push(projectsObj);
   projectBuilder(users);
   document.querySelector("#projectsForm").reset();
 };
@@ -338,6 +342,7 @@ const handleButtonEventsRepos = () => {
   document.querySelector('#reposForm').addEventListener('submit', newRepoForm)
 };  
 
+  // Projects Event Listener //
 const handleButtonEventsProjects = () => {
   document.querySelector('#projectsForm').addEventListener('submit', getProjectsFormInfo);
 };

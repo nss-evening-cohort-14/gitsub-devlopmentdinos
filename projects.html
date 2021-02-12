@@ -36,20 +36,33 @@
         </li>
       </ul>
     </nav>
+    
+    <form class="input-group m-3">
+      <input type="text" class="form-control" placeholder="Search">
+      <div class="input-group-btn">
+        <button class="btn btn-default" type="submit">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </div>
+    </form>
+    
     <div class="data-container m-3 d-flex flex-column flex-nowrap" id="projectCards"></div>
-      Projects
       <!-- Card classes for data containers to be utilized in JS Builders -->
 
     <div class="form-container m-3">
+      <h4>Create a new project</h4>
+      <p>Stay organized to keep your work on track and on schedule.</p>
+      <hr />
       <form id="projectsForm">
         <div class="mb-3">
-          <label for="formGroupExampleInput" class="form-label">Project Board Name:</label>
-          <input type="text" class="form-control" id="projectName" placeholder="Your project name here" required>
+          <label for="formGroupExampleInput" class="form-label">Project Board Name</label>
+          <input type="text" class="form-control w-50" id="projectName" placeholder="Awesome project name" required>
         </div>
         <div class="mb-3">
-          <label for="formGroupExampleInput2" class="form-label">Project Description</label>
-          <input type="text" class="form-control" id="projectDescription" placeholder="Your description here" required>
+          <label for="FormControlTextarea1">Project Description (Optional)</label>
+          <textarea class="form-control" id="projectDescription" rows="3"></textarea>
         </div>
+        <hr />
         <button type="submit" class="btn btn-primary">Create Project</button>
       </form>
     </div>
