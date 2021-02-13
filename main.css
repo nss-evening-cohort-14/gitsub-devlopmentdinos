@@ -5,16 +5,13 @@ body {
   background-color: #ffebcd;
 }
 /* Overview Page Start */
-nav {
-}
 .master-container {
   width: 100%;
   height: 100%;
 }
-.profile-container {
-}
+
 .left-container {
-  width: 20%;
+  width: 25%;
   height: auto;
 }
 .profile-container {
@@ -38,10 +35,11 @@ nav {
 }
 .dino-logo {
   background-color: cornsilk;
+  border: 3px solid grey;
   height: 250px;
   width: 90%;
   border-radius: 50%;
-  margin: auto;
+  margin: 30px auto;
   cursor: pointer;
 }
 .btn-group {
@@ -59,15 +57,29 @@ nav {
 .profile-links li {
   list-style: none;
   margin: 0;
-  height: auto;
+  height: 40px;
   line-height: 1;
   padding: 10px;
 }
-.icon-image {
-  color: white;
-  margin: 0 10px;
-  width: 15px;
-  height: 15px;
+.profile-followers div {
+  height: 30px;
+}
+.profile-followers li {
+  font-size: 15px;
+  list-style-type: none;
+  display: inline-block;
+  margin: 0 5px;
+}
+.profile-followers .material-icons {
+  text-align: center;
+  margin: 0;
+  width: 20px;
+  display: inline-block;
+  height: 20px;
+}
+.profile-followers ul {
+  height: 20px;
+  padding: 30px 5px;
 }
 #pinnedRepos {
   padding: 50px;
@@ -113,11 +125,31 @@ a {
   background-position: right;
   background-repeat: no-repeat;
 }
-.material-icons-profile {
-  font-size: 18px;
-  margin-right: 5px;
-
+.badge {
+   border: 1px solid grey;
+   background-color: royalblue ;
+   max-width: 40px;
+   color: whitesmoke;
 }
+.material-icons {
+  cursor: pointer;
+  color: gold;
+}
+ul .material-icons {
+  color: white;
+  font-size: 18px;
+}
+.material-icons-profile {
+  color: white;
+  font-size: 20px;
+  margin-right: 8px;
+}
+.profile-star {
+  color: white;
+  align-self: flex-end;
+  justify-self: end;
+}
+
 /* Overview Page End */
 footer {
   margin: 40px 0;

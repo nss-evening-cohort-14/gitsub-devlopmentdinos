@@ -112,11 +112,13 @@ const profileCardBuilder = () => {
   <button class="btn btn-primary m-1 profile-btn" type="submit">Share</button>
   <button class="btn btn-primary m-1 profile-btn" type="submit">Like</button>
 </div>
-<ul class="profile-followers d-flex flex-row">
-<li>1.5b followers</li>
-<li>324 following</li>
-<li></li>
-</ul>
+<div class="profile-followers p-2 d-flex flex-row justify-content-evenly align-items-flex-end">
+<div>1.5b <span class="text-muted">followers</span></div>
+<b>&middot;</b>
+<div>324 <span class="text-muted">following</span></div>
+<b>&middot;</b>
+<div class="text-center"><span class="material-icons profile-star">star_border</span></div>47k
+</div>
 <ul class="profile-links">
   <li>
   <span class="material-icons material-icons-profile">
@@ -135,6 +137,8 @@ const profileCardBuilder = () => {
   Tyrannosaurus
   </li>
 </ul>
+<hr>
+<span class="badge">PRO</span>
   `;
   printToDom("#profile-container", domString);
 };
@@ -237,11 +241,14 @@ const pinnedRepoBuilder = (array) => {
 // Function build list of repos
 
 const repoBuilders = (user) => {
-  let domString = "";
-  user.forEach((element) => {
-    element.repos.forEach((taco) => {
+  let domString = '';
+  user.forEach(element => {
+    element.repos.forEach((taco, i) => {
       domString += `<div class="card">
-      <div class="card-header">${taco.repoName}</div>
+      <div class="card-header d-flex">
+      <span class="material-icons align-items-end" id="star${i}">star_border</span>
+      ${taco.repoName}
+      </div>
       <div class="card-body">
         <p class="card-text">${taco.repoDescription}</p>
         <button type="button" class="btn btn-secondary tag">${taco.repoTags[0]}</button>
@@ -259,6 +266,7 @@ const repoBuilders = (user) => {
         repoTag[i].classList.add("hidden");
       }
     }
+
   });
 };
 // ********** END **********
@@ -389,15 +397,19 @@ const newRepoForm = (e) => {
   repoBuilders(users);
 
   // Reset the form //
-  document.querySelector("form").reset();
+  document.querySelector('form').reset();
+  repoStar();
 };
 
 // Repos Searchbar Builder Function
 const repoSearchBuilder = (taco) => {
-  let newDomString = "";
-  taco.forEach((element) => {
-    newDomString += `<div class="card">
-  <div class="card-header">${element.repoName}</div>
+let newDomString = '';
+taco.forEach((element, i) => {
+  newDomString += `<div class="card">
+  <div class="card-header">
+  <span class="material-icons align-items-end" id="star${i}">star_border</span>
+  ${element.repoName}
+  </div>
   <div class="card-body">
     <p class="card-text">${element.repoDescription}</p>
     <button type="button" class="btn btn-secondary tag">${element.repoTags[0]}</button>
@@ -415,7 +427,8 @@ const repoSearchBuilder = (taco) => {
     }
   }
 };
-
+    
+// Function to search and filter through repos
 const repoSearch = (e) => {
   const searchResult = e.target.value.toLowerCase();
   const filteredRepos = users[0].repos.filter((repo) => {
@@ -425,8 +438,22 @@ const repoSearch = (e) => {
     );
   });
   repoSearchBuilder(filteredRepos)
+  repoStar();
 }
 
+// Function to target the Repo Form Star
+const repoStar = () => {
+  const repoStarId = document.querySelectorAll('.material-icons');
+  for (let i = 0; i < repoStarId.length; i++) {
+    repoStarId[i].addEventListener('click', function() {
+      if (repoStarId[i].innerHTML === 'star_border') {
+        repoStarId[i].innerHTML = 'star'
+      } else {
+        repoStarId[i].innerHTML = 'star_border'
+      }
+    })
+  };
+}
 // Search Packages
 const searchPackages = (e) => {
   let domString = '';
@@ -505,9 +532,9 @@ const handleButtonEventsIndex = () => {
 };
 // Repos Event Listener //
 const handleButtonEventsRepos = () => {
-  document.querySelector("#reposForm").addEventListener("submit", newRepoForm);
-  document.querySelector("#searchBar").addEventListener("keyup", repoSearch);
-};
+  document.querySelector('#reposForm').addEventListener('submit', newRepoForm);
+  document.querySelector('#searchBar').addEventListener('keyup', repoSearch);
+};  
 
 // Projects Event Listener //
 const handleButtonEventsProjects = () => {
@@ -528,7 +555,8 @@ const init = () => {
     repoBuilders(users);
     handleButtonEventsRepos();
     profileCardBuilder();
-  } else if (window.location.pathname === "/projects.html") {
+    repoStar();
+    } else if (window.location.pathname === '/projects.html') {
     projectBuilder(users);
     handleButtonEventsProjects();
     profileCardBuilder();
