@@ -60,7 +60,8 @@ nav {
   list-style: none;
   margin: 0;
   height: auto;
-  line-height: 2;
+  line-height: 1;
+  padding: 10px;
 }
 .icon-image {
   color: white;
@@ -111,6 +112,11 @@ a {
   background-image: url("./hunter_v1.0.jpg");
   background-position: right;
   background-repeat: no-repeat;
+}
+.material-icons-profile {
+  font-size: 18px;
+  margin-right: 5px;
+
 }
 /* Overview Page End */
 footer {

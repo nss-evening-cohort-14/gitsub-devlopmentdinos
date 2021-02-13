@@ -112,27 +112,27 @@ const profileCardBuilder = () => {
   <button class="btn btn-primary m-1 profile-btn" type="submit">Share</button>
   <button class="btn btn-primary m-1 profile-btn" type="submit">Like</button>
 </div>
+<ul class="profile-followers d-flex flex-row">
+<li>1.5b followers</li>
+<li>324 following</li>
+<li></li>
+</ul>
 <ul class="profile-links">
   <li>
-    <img
-      class="icon-image"
-      src="./iconfinder_location_115718.png"
-      alt=""
-    />Pangea, Earth
+  <span class="material-icons material-icons-profile">
+  location_on
+  </span>Pangea, Earth
   </li>
   <li>
-    <img
-      class="icon-image"
-      src="./iconfinder_mail_115714.png"
-      alt=""
-    />D1n0boi74@paleo.mail
+  <span class="material-icons material-icons-profile">
+  email
+  </span>D1n0boi74@paleo.mail
   </li>
   <li>
-    <img
-      class="icon-image"
-      src="./iconfinder_Dinosaur_367624.png"
-      alt=""
-    />Genus: Tyrannosaurus
+  <span class="material-icons material-icons-profile">
+  verified
+  </span> 
+  Tyrannosaurus
   </li>
 </ul>
   `;
