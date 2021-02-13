@@ -424,7 +424,6 @@ const repoSearch = (e) => {
       repo.repoDescription.toLowerCase().includes(searchResult)
     );
   });
-<<<<<<< HEAD
   repoSearchBuilder(filteredRepos)
 }
 
@@ -452,9 +451,6 @@ const searchPackages = (e) => {
  </div>`;
   })
 printToDom('#packageCard', domString);
-=======
-  repoSearchBuilder(filteredRepos);
->>>>>>> d7212bc309783de11df58c152b12bcc5045b6cfd
 };
 
 // Get Package Form Info
@@ -491,22 +487,11 @@ const deletePackage = (e) => {
 // *** Event Listeners *** //
 
 // Package Event Listener
-<<<<<<< HEAD
   const handleButtonPackages = () => {
     document.querySelector('#package-form').addEventListener('submit', packageForm);
     document.querySelector('#packageCard').addEventListener('click', deletePackage);
     document.querySelector('#packSearch').addEventListener('keyup', searchPackages);
   };
-=======
-const handleButtonPackages = () => {
-  document
-    .querySelector("#package-form")
-    .addEventListener("submit", packageForm);
-  document
-    .querySelector("#packageCard")
-    .addEventListener("click", deletePackage);
-};
->>>>>>> d7212bc309783de11df58c152b12bcc5045b6cfd
 
 // Index Event Listener //
 const handleButtonEventsIndex = () => {
