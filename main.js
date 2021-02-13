@@ -30,24 +30,29 @@ const users = [
     ],
     projects: [
       {
-        projectName: "Project 1",
-        projectDescription: "Fancy project",
+        projectName: "my-goals",
+        projectDescription: "I want to keep my progress on track. I am keeping my goals up to date and organized with this project.",
+        updatedTime: "44 minutes ago",
       },
       {
-        projectName: "Project 2",
-        projectDescription: "Fancier project",
+        projectName: "Sorting Hat",
+        projectDescription: "A little fun inside the fictional world of Herry Porter. Users can find out what social club they belong to. Fun for all ages.",
+        updatedTime: "234 minutes ago",
       },
       {
-        projectName: "Project 3",
-        projectDescription: "Fantastic project",
+        projectName: "Personal Bio",
+        projectDescription: "Working on my personal bio page. Showing off my best work.",
+        updatedTime: "109 minutes ago",
       },
       {
-        projectName: "Project 4",
-        projectDescription: "Boss project",
+        projectName: "Damage Control",
+        projectDescription: "This project is a simple page to keep users calm in the event of a missed appointment. Everyone can use a damage control page.",
+        updatedTime: "46784 minutes ago",
       },
       {
-        projectName: "Project 5",
-        projectDescription: "Awesome project",
+        projectName: "Sexy Code",
+        projectDescription: "Dinos love to look their best. Dino code projects are also expected to uphold the Dino appearance standard. Sexy Dinos have sexy code.",
+        updatedTime: "48 minutes ago",
       },
     ],
     packages: [
@@ -90,7 +95,9 @@ const projectBuilder = (array) => {
                       <div class="card-header">${arg.projectName}</div>
                       <div class="card-body">
                         <p class="card-text">${arg.projectDescription}</p>
+                        <p class="card-text">Updated ${arg.updatedTime}</p>
                       </div>
+                      
                     </div>`;
     });
     printToDom("#projectCards", domString);
@@ -313,10 +320,12 @@ const getProjectsFormInfo = (e) => {
   const projectName = document.querySelector("#projectName").value;
   const projectDescription = document.querySelector("#projectDescription")
     .value;
+  const updatedTime = "1 minute ago"
 
   const projectsObj = {
     projectName,
     projectDescription,
+    updatedTime,
   };
 
   if (projectDescription.length === 0) {
