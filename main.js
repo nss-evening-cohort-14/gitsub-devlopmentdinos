@@ -149,7 +149,7 @@ const createPackage = (taco) => {
   let domString = "";
   taco.forEach((element, i) => {
       element.packages.forEach((arg) => {
-      domString += `<div class="card border-dark mb-3" id="${i}" style="width: 25rem">
+      domString += `<div class="card border-dark mb-3" style="width: 25rem">
                        <div class="card-header">${arg.packageName}</div>
                        <div class="card-body">
                        <p class="card-text">${arg.packageDescription}</p>
@@ -325,12 +325,12 @@ createPackage(users);
 // Delete Package
 const deletePackage = (e) => {
  const targetType = e.target.type;
- const targetId = e.target.id;
+ let targetId = e.target.id;
  
  if (targetType === "button") {
     users[0].packages.splice(targetId, 1);
-    createPackage(users);
- }
+    createPackage(users);   
+  };
 
 };
 
