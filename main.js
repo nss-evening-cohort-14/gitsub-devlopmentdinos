@@ -310,18 +310,48 @@ const getProjectsFormInfo = (e) => {
 
   const projectName = document.querySelector('#projectName').value;
   const projectDescription = document.querySelector('#projectDescription').value;
-
-  const obj = {
+ 
+  const projectsObj = {
     projectName,
     projectDescription,
   };
 
-  users[0].projects.push(obj);
+  if (projectDescription.length === 0) {
+    projectsObj.projectDescription = 'No description';
+  };
+  
+  users[0].projects.push(projectsObj);
   projectBuilder(users);
   document.querySelector("#projectsForm").reset();
 };
+// End Projects form info
+// Start Projects search bar function
 
-
+const projectSearch = (e) => {
+  let newDomString = '';
+  const filteredArray = [];
+  const searchString = e.target.value.toLowerCase();
+  const filteredUsers = users[0].projects.filter( project => {
+    return (
+      project.projectName.toLowerCase().includes(searchString) || 
+      project.projectDescription.toLowerCase().includes(searchString)
+      
+    );
+    
+  });
+  filteredArray.push(filteredUsers);
+  filteredArray.forEach ((element) => {
+    for (let i = 0; i < element.length; i++) {
+      newDomString += `<div class="card mt-3">
+                      <div class="card-header">${element[i].projectName}</div>
+                      <div class="card-body">
+                        <p class="card-text">${element[i].projectDescription}</p>
+                      </div>
+                    </div>`;
+    }
+    });
+    printToDom('#projectCards', newDomString);
+};
 
 // Function to submit new Repo Form 
 const newRepoForm = (e) => {
@@ -387,8 +417,10 @@ const handleButtonEventsRepos = () => {
   document.querySelector('#reposForm').addEventListener('submit', newRepoForm);
 };  
 
+  // Projects Event Listener //
 const handleButtonEventsProjects = () => {
   document.querySelector('#projectsForm').addEventListener('submit', getProjectsFormInfo);
+  document.querySelector('#projSearch').addEventListener('keyup', projectSearch);
 };
 // *** Initializers *** //
 const init = () => {
