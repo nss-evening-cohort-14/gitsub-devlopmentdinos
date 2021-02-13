@@ -185,7 +185,7 @@ const createPackage = (taco) => {
   let domString = "";
   taco.forEach((element) => {
     element.packages.forEach((arg, i) => {
-      domString += `<div id="${i}" class="card border-dark mb-3" style="width: 25rem">
+      domString += `<div id="${i}" class="card bg-light mb-3" style="width: 25rem">
                        <div class="card-header">${arg.packageName}</div>
                        <div class="card-body">
                        <p class="card-text">${arg.packageDescription}</p>
