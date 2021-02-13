@@ -128,12 +128,12 @@ a {
   color: white;
 }
 
-.repo-ch {
+.card-header {
   background-color: #212020;
   color: #1ea0f7;
 }
 
-.repo-cb {
+.card-body {
   background-color: #212020;
   color: #b0abab;
 }
@@ -143,6 +143,10 @@ a {
   color: #1ea0f7;
 }
 
+.card-body button {
+  background-color: #212020;
+  color: #1ea0f7;
+}
 .star {
   cursor: pointer;
   color: gold;
