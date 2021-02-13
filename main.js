@@ -187,12 +187,12 @@ const aboutMeOpen = () => {
 const createPackage = (taco) => {
   let domString = "";
   taco.forEach((element) => {
-      element.packages.forEach((arg) => {
-      domString += `<div class="card border-dark mb-3" style="width: 25rem">
+      element.packages.forEach((arg, i) => {
+      domString += `<div id="${i}" class="card border-dark mb-3" style="width: 25rem">
                        <div class="card-header">${arg.packageName}</div>
                        <div class="card-body">
                        <p class="card-text">${arg.packageDescription}</p>
-                       <button type="button" class="btn btn-secondary">Delete</button>
+                       <button type="button" id="${i}" class="btn btn-secondary">Delete</button>
                        </div>
                     </div>`;
     });
@@ -450,11 +450,24 @@ createPackage(users);
 };
 // End Get Package Form Info
 
+// Delete Package
+const deletePackage = (e) => {
+ const targetType = e.target.type;
+ let targetId = e.target.id;
+ 
+ if (targetType === "button") {
+    users[0].packages.splice(targetId, 1);
+    createPackage(users);   
+  };
+
+};
+
 // *** Event Listeners *** //
 
 // Package Event Listener
   const handleButtonPackages = () => {
     document.querySelector('#package-form').addEventListener('submit', packageForm);
+    document.querySelector('#packageCard').addEventListener('click', deletePackage);
   };
 
   // Index Event Listener //
