@@ -7,6 +7,7 @@
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
     crossorigin="anonymous"
   />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="main.css" />
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -36,20 +37,29 @@
         </li>
       </ul>
     </nav>
+    
+    <div class="search-container m-3 fa fa-search" id="projectSearch">
+      <input type="text" name="projectSearch" id="projSearch"
+        placeholder="Search your projects"/>
+    </div>
+    
     <div class="data-container m-3 d-flex flex-column flex-nowrap" id="projectCards"></div>
-      Projects
       <!-- Card classes for data containers to be utilized in JS Builders -->
 
     <div class="form-container m-3">
+      <h4>Create a new project</h4>
+      <p>Stay organized to keep your work on track and on schedule.</p>
+      <hr />
       <form id="projectsForm">
         <div class="mb-3">
-          <label for="formGroupExampleInput" class="form-label">Project Board Name:</label>
-          <input type="text" class="form-control" id="projectName" placeholder="Your project name here" required>
+          <label for="formGroupExampleInput" class="form-label">Project Board Name</label>
+          <input type="text" class="form-control w-50" id="projectName" placeholder="Awesome project name" required>
         </div>
         <div class="mb-3">
-          <label for="formGroupExampleInput2" class="form-label">Project Description</label>
-          <input type="text" class="form-control" id="projectDescription" placeholder="Your description here" required>
+          <label for="FormControlTextarea1">Project Description (Optional)</label>
+          <textarea class="form-control" id="projectDescription" rows="3"></textarea>
         </div>
+        <hr />
         <button type="submit" class="btn btn-primary">Create Project</button>
       </form>
     </div>
