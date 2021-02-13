@@ -245,15 +245,15 @@ const repoBuilders = (user) => {
   user.forEach(element => {
     element.repos.forEach((taco, i) => {
       domString += `<div class="card">
-      <div class="card-header d-flex">
-      <span class="material-icons align-items-end" id="star${i}">star_border</span>
+      <div class="card-header repo-ch d-flex">
+      <span class="material-icons align-items-end star" id="star${i}">star_border</span>
       ${taco.repoName}
       </div>
-      <div class="card-body">
+      <div class="card-body repo-cb">
         <p class="card-text">${taco.repoDescription}</p>
-        <button type="button" class="btn btn-secondary tag">${taco.repoTags[0]}</button>
-        <button type="button" class="btn btn-secondary tag">${taco.repoTags[1]}</button>
-        <button type="button" class="btn btn-secondary tag">${taco.repoTags[2]}</button>
+        <button type="button" class="btn btn-secondary tag repo-btn">${taco.repoTags[0]}</button>
+        <button type="button" class="btn btn-secondary tag repo-btn">${taco.repoTags[1]}</button>
+        <button type="button" class="btn btn-secondary tag repo-btn">${taco.repoTags[2]}</button>
       </div>
     </div>
     <hr />`;
@@ -406,15 +406,15 @@ const repoSearchBuilder = (taco) => {
 let newDomString = '';
 taco.forEach((element, i) => {
   newDomString += `<div class="card">
-  <div class="card-header">
-  <span class="material-icons align-items-end" id="star${i}">star_border</span>
+  <div class="card-header repo-ch">
+  <span class="material-icons align-items-end star" id="star${i}">star_border</span>
   ${element.repoName}
   </div>
-  <div class="card-body">
+  <div class="card-body repo-cb">
     <p class="card-text">${element.repoDescription}</p>
-    <button type="button" class="btn btn-secondary tag">${element.repoTags[0]}</button>
-    <button type="button" class="btn btn-secondary tag">${element.repoTags[1]}</button>
-    <button type="button" class="btn btn-secondary tag">${element.repoTags[2]}</button>
+    <button type="button" class="btn btn-secondary tag repo-btn">${element.repoTags[0]}</button>
+    <button type="button" class="btn btn-secondary tag repo-btn">${element.repoTags[1]}</button>
+    <button type="button" class="btn btn-secondary tag repo-btn">${element.repoTags[2]}</button>
   </div>
 </div>
 <hr />`;
