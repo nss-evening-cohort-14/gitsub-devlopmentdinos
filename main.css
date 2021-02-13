@@ -116,3 +116,7 @@ a {
 footer {
   margin: 40px 0;
 }
+
+.bi {
+  fill:rgb(43, 165, 165);
+}
