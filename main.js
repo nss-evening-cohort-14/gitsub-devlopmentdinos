@@ -326,7 +326,7 @@ createPackage(users);
 const deletePackage = (e) => {
  const targetType = e.target.type;
  let targetId = e.target.id;
- console.log(targetId);
+ 
  if (targetType === "button") {
     users[0].packages.splice(targetId, 1);
     createPackage(users);   
