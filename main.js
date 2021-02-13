@@ -359,11 +359,27 @@ const newRepoForm = (e) => {
 
   const repoName = document.querySelector('#repoName').value;
   const repoDescription = document.querySelector('#repoDescription').value;
-  const repoTags = ['Test'];
   const isPinned = false;
+  let repoTag1 = document.querySelector('#tag1').value;
+  let repoTag2 = document.querySelector('#tag2').value;
+  let repoTag3 = document.querySelector('#tag3').value;
+  let repoTags = [];
+  
+  // Conditionals to check if input tags are populated
+  if (repoTag1.length > 0) {
+    repoTags.push(repoTag1)
+  } 
+
+  if (repoTag2.length > 0) {
+    repoTags.push(repoTag2)
+  }
+
+  if (repoTag3.length > 0) {
+    repoTags.push(repoTag3)
+  }
+
 
   // Store form data in obj
-
   const repoObj = {
     repoName,
     repoDescription,
@@ -378,6 +394,41 @@ const newRepoForm = (e) => {
   // Reset the form //
   document.querySelector('form').reset();
 };
+
+// Repos Searchbar Builder Function
+const repoSearchBuilder = (taco) => {
+let newDomString = '';
+taco.forEach(element => {
+  newDomString += `<div class="card">
+  <div class="card-header">${element.repoName}</div>
+  <div class="card-body">
+    <p class="card-text">${element.repoDescription}</p>
+    <button type="button" class="btn btn-secondary tag">${element.repoTags[0]}</button>
+    <button type="button" class="btn btn-secondary tag">${element.repoTags[1]}</button>
+    <button type="button" class="btn btn-secondary tag">${element.repoTags[2]}</button>
+  </div>
+</div>
+<hr />`;
+})
+printToDom('#repoContainer', newDomString);
+const repoTag = document.querySelectorAll("button.tag");
+for (let i=0; i < repoTag.length; i++) {
+  if (repoTag[i].innerHTML === typeof undefined) {
+    repoTag[i].classList.add('hidden');
+  }
+};
+};
+    
+
+const repoSearch = (e) => {
+  const searchResult = e.target.value.toLowerCase();
+  const filteredRepos = users[0].repos.filter(repo => {
+    return repo.repoName.toLowerCase().includes(searchResult) || repo.repoDescription.toLowerCase().includes(searchResult)
+  });
+  repoSearchBuilder(filteredRepos)
+}
+
+
 
 // Get Package Form Info
 const packageForm = (e) => {
@@ -415,6 +466,7 @@ const handleButtonEventsIndex = () => {
   // Repos Event Listener //
 const handleButtonEventsRepos = () => {
   document.querySelector('#reposForm').addEventListener('submit', newRepoForm);
+  document.querySelector('#searchBar').addEventListener('keyup', repoSearch)
 };  
 
   // Projects Event Listener //
