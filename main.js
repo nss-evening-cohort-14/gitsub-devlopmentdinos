@@ -241,9 +241,12 @@ const pinnedRepoBuilder = (array) => {
 const repoBuilders = (user) => {
   let domString = '';
   user.forEach(element => {
-    element.repos.forEach(taco => {
+    element.repos.forEach((taco, i) => {
       domString += `<div class="card">
-      <div class="card-header">${taco.repoName}</div>
+      <div class="card-header d-flex">
+      <span class="material-icons align-items-end" id="star${i}">star_border</span>
+      ${taco.repoName}
+      </div>
       <div class="card-body">
         <p class="card-text">${taco.repoDescription}</p>
         <button type="button" class="btn btn-secondary tag">${taco.repoTags[0]}</button>
@@ -261,6 +264,7 @@ const repoBuilders = (user) => {
         repoTag[i].classList.add('hidden');
       }
     }
+
   });
   };
 // ********** END **********
@@ -393,14 +397,18 @@ const newRepoForm = (e) => {
 
   // Reset the form //
   document.querySelector('form').reset();
+  repoStar();
 };
 
 // Repos Searchbar Builder Function
 const repoSearchBuilder = (taco) => {
 let newDomString = '';
-taco.forEach(element => {
+taco.forEach((element, i) => {
   newDomString += `<div class="card">
-  <div class="card-header">${element.repoName}</div>
+  <div class="card-header">
+  <span class="material-icons align-items-end" id="star${i}">star_border</span>
+  ${element.repoName}
+  </div>
   <div class="card-body">
     <p class="card-text">${element.repoDescription}</p>
     <button type="button" class="btn btn-secondary tag">${element.repoTags[0]}</button>
@@ -419,15 +427,29 @@ for (let i=0; i < repoTag.length; i++) {
 };
 };
     
-
+// Function to search and filter through repos
 const repoSearch = (e) => {
   const searchResult = e.target.value.toLowerCase();
   const filteredRepos = users[0].repos.filter(repo => {
     return repo.repoName.toLowerCase().includes(searchResult) || repo.repoDescription.toLowerCase().includes(searchResult)
   });
   repoSearchBuilder(filteredRepos)
+  repoStar();
 }
 
+// Function to target the Repo Form Star
+const repoStar = () => {
+  const repoStarId = document.querySelectorAll('.material-icons');
+  for (let i = 0; i < repoStarId.length; i++) {
+    repoStarId[i].addEventListener('click', function() {
+      if (repoStarId[i].innerHTML === 'star_border') {
+        repoStarId[i].innerHTML = 'star'
+      } else {
+        repoStarId[i].innerHTML = 'star_border'
+      }
+    })
+  };
+}
 
 
 // Get Package Form Info
@@ -479,7 +501,7 @@ const handleButtonEventsIndex = () => {
   // Repos Event Listener //
 const handleButtonEventsRepos = () => {
   document.querySelector('#reposForm').addEventListener('submit', newRepoForm);
-  document.querySelector('#searchBar').addEventListener('keyup', repoSearch)
+  document.querySelector('#searchBar').addEventListener('keyup', repoSearch);
 };  
 
   // Projects Event Listener //
@@ -497,6 +519,7 @@ const init = () => {
     repoBuilders(users);
     handleButtonEventsRepos();
     profileCardBuilder();
+    repoStar();
     } else if (window.location.pathname === '/projects.html') {
     projectBuilder(users);
     handleButtonEventsProjects();
