@@ -112,6 +112,12 @@ a {
   background-position: right;
   background-repeat: no-repeat;
 }
+
+.material-icons {
+  cursor: pointer;
+  color: gold;
+}
+
 /* Overview Page End */
 footer {
   margin: 40px 0;
