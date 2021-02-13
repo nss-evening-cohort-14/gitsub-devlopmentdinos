@@ -52,20 +52,20 @@ const users = [
     ],
     packages: [
       {
-        packageName: 'Package 1',
-        packageDescription: 'Description 1'
+        packageName: 'JavaScript',
+        packageDescription: 'Node Package Manager'
       },
       {
-        packageName: 'Package 2',
-        packageDescription: 'Description 2'
+        packageName: 'Ruby',
+        packageDescription: 'RubyGems Pacakage Manager'
       },
       {
-        packageName: 'Package 3',
-        packageDescription: 'Description 3'
+        packageName: 'Java',
+        packageDescription: 'Gradle build Automation Tool for Java'
       },
       {
-        packageName: 'Package 4',
-        packageDescription: 'Description 4'
+        packageName: '.NET',
+        packageDescription: 'NuGet Package Management for .NET'
       },
     ]
   },
@@ -428,7 +428,31 @@ const repoSearch = (e) => {
   repoSearchBuilder(filteredRepos)
 }
 
+// Search Packages
+const searchPackages = (e) => {
+  let domString = '';
+  const packArray = [];
+  const searchCriteria = e.target.value.toLowerCase();
+  const filterPackages = users[0].packages.filter( package => {
+    return (
+      package.packageName.toLowerCase().includes(searchCriteria) ||
+      package.packageDescription.toLowerCase().includes(searchCriteria)
+    );
+  });
 
+  packArray.push(filterPackages);
+  packArray.forEach((element) => {
+    for (let i = 0; i < element.length; i++)
+    domString += `<div class="card border-dark mb-3" style="width: 25rem">
+    <div class="card-header">${element[i].packageName}</div>
+    <div class="card-body">
+    <p class="card-text">${element[i].packageDescription}</p>
+    <button type="button" class="btn btn-secondary">Delete</button>
+    </div>
+ </div>`;
+  })
+printToDom('#packageCard', domString);
+};
 
 // Get Package Form Info
 const packageForm = (e) => {
@@ -468,6 +492,7 @@ const deletePackage = (e) => {
   const handleButtonPackages = () => {
     document.querySelector('#package-form').addEventListener('submit', packageForm);
     document.querySelector('#packageCard').addEventListener('click', deletePackage);
+    document.querySelector('#packSearch').addEventListener('keyup', searchPackages);
   };
 
   // Index Event Listener //
