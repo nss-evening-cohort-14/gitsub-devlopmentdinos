@@ -87,7 +87,9 @@ nav {
 .hidden {
   display: none;
 }
-
+.delete-btn {
+  margin-left: auto;
+}
 /* Overview Page End */
 footer {
   margin: 40px 0;
