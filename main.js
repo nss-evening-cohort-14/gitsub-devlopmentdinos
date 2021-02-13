@@ -144,44 +144,44 @@ const profileCardBuilder = () => {
 };
 // Opens the about me section in index.html
 const aboutMeOpen = () => {
-  let domString = '';
   const aboutMe = document.querySelector('#aboutMe').innerHTML;
-  if (aboutMe === '') {
-   domString = ` <div class="about-me m-3 p-4" id="aboutMe"><h5 class="about-me-file-text text-muted">d1n0boi/README.md</h5>
-    <h4 class="about-me-title">Hi, I'm Dino &#129430 &#129429</h4>
-    <hr>
-    <div class="card mb-3 p-3">
-      <div class="aboutme-background-image-container card-img-top p-5">
-        <h2 class="fs-1">Dino Dinosaurus</h2>
-        <h4 class="text-muted">Software Engineer, Content Creator, Prehistoric Lizard</h4>
-      </div>
-      <div class="card-body">
-      <p class="card-text">Jainosaurus Diclonius Dongbeititan Talos Ojoraptorsaurus Lufengosaurus Majungasaurus Tanystropheus Duriatitan Dryptosauroides <a href="https://en.wikipedia.org/wiki/Fukuiraptor" target="_blank">Fukuiraptor</a> Manidens Avalonia Procerosaurus Supersaurus Auroraceratops Jubbulpuria Koreaceratops Aristosuchus Gorgosaurus Itemirus Dandakosaurus Tawa Ilokelesia Anatotitan Procompsognathus Sellosaurus Onychosaurus Centemodon Rayososaurus. Jainosaurus Diclonius Dongbeititan Talos Ojoraptorsaurus Lufengosaurus Majungasaurus Tanystropheus Duriatitan Dryptosauroides Fukuiraptor Manidens Avalonia Procerosaurus Supersaurus Auroraceratops Jubbulpuria Koreaceratops  Aristosuchus <a href="https://en.wikipedia.org/wiki/Gorgosaurus" target="_blank">Gorgosaurus</a> Itemirus Dandakosaurus Tawa Ilokelesia   Anatotitan Procompsognathus Sellosaurus Onychosaurus Centemodon Rayososaurus.</p>
-      </div>
-      <div class="mb-3 aboutme-bottom">
-        <div class="row g-0">
-          <div class="col-md-4">
-          <img src="./klipartz.com (1).png" style="width: 250px; height: 200px;" alt="chibi-rex" class="me-5">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Find me around the globe &#127758 &#127756 :</h5>
-              <hr>
-              <ul>
-              <li>Streaming on <a href="">Twitch.tv</a></li>
-              <li>Tinkering with Javascript on <a href="https://jsfiddle.net/" target="_blank">jsfiddle</a></li>
-              <li>Creating exciting new tech on <a href="https://github.com/nashville-software-school" target="_blank">GitHub</a></li>
-              </ul>
-            </div>
+  let domString = `<div class="about-me m-3 p-4" id="aboutMe"><h5 class="about-me-file-text text-muted">d1n0boi/README.md</h5>
+  <h4 class="about-me-title">Hi, I'm Dino &#129430 &#129429</h4>
+  <hr>
+  <div class="card mb-3 p-3">
+    <div class="aboutme-background-image-container card-img-top p-5">
+      <h2 class="fs-1">Dino Dinosaurus</h2>
+      <h4 class="text-muted">Software Engineer, Content Creator, Prehistoric Lizard</h4>
+    </div>
+    <div class="card-body">
+    <p class="card-text">Jainosaurus Diclonius Dongbeititan Talos Ojoraptorsaurus Lufengosaurus Majungasaurus Tanystropheus Duriatitan Dryptosauroides <a href="https://en.wikipedia.org/wiki/Fukuiraptor" target="_blank">Fukuiraptor</a> Manidens Avalonia Procerosaurus Supersaurus Auroraceratops Jubbulpuria Koreaceratops Aristosuchus Gorgosaurus Itemirus Dandakosaurus Tawa Ilokelesia Anatotitan Procompsognathus Sellosaurus Onychosaurus Centemodon Rayososaurus. Jainosaurus Diclonius Dongbeititan Talos Ojoraptorsaurus Lufengosaurus Majungasaurus Tanystropheus Duriatitan Dryptosauroides Fukuiraptor Manidens Avalonia Procerosaurus Supersaurus Auroraceratops Jubbulpuria Koreaceratops  Aristosuchus <a href="https://en.wikipedia.org/wiki/Gorgosaurus" target="_blank">Gorgosaurus</a> Itemirus Dandakosaurus Tawa Ilokelesia   Anatotitan Procompsognathus Sellosaurus Onychosaurus Centemodon Rayososaurus.</p>
+    </div>
+    <div class="mb-3 aboutme-bottom">
+      <div class="row g-0">
+        <div class="col-md-4">
+        <img src="./klipartz.com (1).png" style="width: 250px; height: 200px;" alt="chibi-rex" class="me-5">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Find me around the globe &#127758 &#127756 :</h5>
+            <hr>
+            <ul>
+            <li>Streaming on <a href="">Twitch.tv</a></li>
+            <li>Tinkering with Javascript on <a href="https://jsfiddle.net/" target="_blank">jsfiddle</a></li>
+            <li>Creating exciting new tech on <a href="https://github.com/nashville-software-school" target="_blank">GitHub</a></li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
-  </div>`;
-  } else {
-    domString = '';
-  }
+  </div>
+</div>`;
   printToDom('#aboutMe', domString);
+  if (aboutMe !== ''){
+    domString = '';
+    printToDom('#aboutMe', domString);
+  }
+  
 };
 // Create Package Card
 const createPackage = (taco) => {
