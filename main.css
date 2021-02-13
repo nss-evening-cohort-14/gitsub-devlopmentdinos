@@ -2,12 +2,13 @@ body {
   height: auto;
   width: 100%;
   padding: 10px;
-  background-color: #ffebcd;
+  background-color: #171616;
+  color: white;
 }
 /* Overview Page Start */
-nav {
+/* nav {
   border: 2px solid red;
-}
+} */
 .master-container {
   width: 100%;
   height: 100%;
@@ -49,7 +50,7 @@ nav {
   width: 100%;
 }
 .profile-btn {
-  background-color: rgb(68, 175, 149);
+  background-color: #b0abab;
   width: 10% !important;
 }
 .profile-links {
@@ -113,7 +114,36 @@ a {
   background-repeat: no-repeat;
 }
 
-.material-icons {
+.navbar {
+  background-color: #212020;
+  color: #b0abab;
+}
+
+.nav-link{
+  color: #b0abab; 
+}
+
+.profile-container {
+  background-color: #212020;
+  color: white;
+}
+
+.repo-ch {
+  background-color: #212020;
+  color: #1ea0f7;
+}
+
+.repo-cb {
+  background-color: #212020;
+  color: #b0abab;
+}
+
+.repo-btn {
+  background-color: #212020;
+  color: #1ea0f7;
+}
+
+.star {
   cursor: pointer;
   color: gold;
 }
