@@ -100,11 +100,11 @@ const projectBuilder = (array) => {
 // Profile Builder function
 const profileCardBuilder = () => {
   let domString = `
-  <img
+  <a href="#" id="aboutMeOpen"><img
   class="dino-logo img-fluid"
   src="./dinoslogo.jpg"
   alt="picture of a dinosaur"
-/>
+/></a>
 <h3 class="h4">Dino Dinosaurus</h3>
 <h5 class="text-muted">D1n0boi74</h5>
 <p>
@@ -142,7 +142,47 @@ const profileCardBuilder = () => {
   `;
   printToDom('#profile-container', domString);
 };
-
+// Opens the about me section in index.html
+const aboutMeOpen = () => {
+  let domString = '';
+  const aboutMe = document.querySelector('#aboutMe').innerHTML;
+  if (aboutMe === '') {
+   domString = ` <div class="about-me m-3 p-4" id="aboutMe"><h5 class="about-me-file-text text-muted">d1n0boi/README.md</h5>
+    <h4 class="about-me-title">Hi, I'm Dino &#129430 &#129429</h4>
+    <hr>
+    <div class="card mb-3 p-3">
+      <div class="aboutme-background-image-container card-img-top p-5">
+        <h2 class="fs-1">Dino Dinosaurus</h2>
+        <h4 class="text-muted">Software Engineer, Content Creator, Prehistoric Lizard</h4>
+      </div>
+      <div class="card-body">
+      <p class="card-text">Jainosaurus Diclonius Dongbeititan Talos Ojoraptorsaurus Lufengosaurus Majungasaurus Tanystropheus Duriatitan Dryptosauroides <a href="https://en.wikipedia.org/wiki/Fukuiraptor" target="_blank">Fukuiraptor</a> Manidens Avalonia Procerosaurus Supersaurus Auroraceratops Jubbulpuria Koreaceratops Aristosuchus Gorgosaurus Itemirus Dandakosaurus Tawa Ilokelesia Anatotitan Procompsognathus Sellosaurus Onychosaurus Centemodon Rayososaurus. Jainosaurus Diclonius Dongbeititan Talos Ojoraptorsaurus Lufengosaurus Majungasaurus Tanystropheus Duriatitan Dryptosauroides Fukuiraptor Manidens Avalonia Procerosaurus Supersaurus Auroraceratops Jubbulpuria Koreaceratops  Aristosuchus <a href="https://en.wikipedia.org/wiki/Gorgosaurus" target="_blank">Gorgosaurus</a> Itemirus Dandakosaurus Tawa Ilokelesia   Anatotitan Procompsognathus Sellosaurus Onychosaurus Centemodon Rayososaurus.</p>
+      </div>
+      <div class="mb-3 aboutme-bottom">
+        <div class="row g-0">
+          <div class="col-md-4">
+          <img src="./klipartz.com (1).png" style="width: 250px; height: 200px;" alt="chibi-rex" class="me-5">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Find me around the globe &#127758 &#127756 :</h5>
+              <hr>
+              <ul>
+              <li>Streaming on <a href="">Twitch.tv</a></li>
+              <li>Tinkering with Javascript on <a href="https://jsfiddle.net/" target="_blank">jsfiddle</a></li>
+              <li>Creating exciting new tech on <a href="https://github.com/nashville-software-school" target="_blank">GitHub</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+  } else {
+    domString = '';
+  }
+  printToDom('#aboutMe', domString);
+};
 // Create Package Card
 const createPackage = (taco) => {
   let domString = "";
@@ -270,18 +310,48 @@ const getProjectsFormInfo = (e) => {
 
   const projectName = document.querySelector('#projectName').value;
   const projectDescription = document.querySelector('#projectDescription').value;
-
-  const obj = {
+ 
+  const projectsObj = {
     projectName,
     projectDescription,
   };
 
-  users[0].projects.push(obj);
+  if (projectDescription.length === 0) {
+    projectsObj.projectDescription = 'No description';
+  };
+  
+  users[0].projects.push(projectsObj);
   projectBuilder(users);
   document.querySelector("#projectsForm").reset();
 };
+// End Projects form info
+// Start Projects search bar function
 
-
+const projectSearch = (e) => {
+  let newDomString = '';
+  const filteredArray = [];
+  const searchString = e.target.value.toLowerCase();
+  const filteredUsers = users[0].projects.filter( project => {
+    return (
+      project.projectName.toLowerCase().includes(searchString) || 
+      project.projectDescription.toLowerCase().includes(searchString)
+      
+    );
+    
+  });
+  filteredArray.push(filteredUsers);
+  filteredArray.forEach ((element) => {
+    for (let i = 0; i < element.length; i++) {
+      newDomString += `<div class="card mt-3">
+                      <div class="card-header">${element[i].projectName}</div>
+                      <div class="card-body">
+                        <p class="card-text">${element[i].projectDescription}</p>
+                      </div>
+                    </div>`;
+    }
+    });
+    printToDom('#projectCards', newDomString);
+};
 
 // Function to submit new Repo Form 
 const newRepoForm = (e) => {
@@ -391,6 +461,7 @@ createPackage(users);
 const handleButtonEventsIndex = () => {
   document.querySelector('#pinnedRepos').addEventListener('click', deletePinnedRepo);
   document.querySelector('#pinnedReposForm').addEventListener('submit',getPinnedRepoFormInfo);
+  document.querySelector('#aboutMeOpen').addEventListener('click', aboutMeOpen);
 };
   // Repos Event Listener //
 const handleButtonEventsRepos = () => {
@@ -398,8 +469,10 @@ const handleButtonEventsRepos = () => {
   document.querySelector('#searchBar').addEventListener('keyup', repoSearch)
 };  
 
+  // Projects Event Listener //
 const handleButtonEventsProjects = () => {
   document.querySelector('#projectsForm').addEventListener('submit', getProjectsFormInfo);
+  document.querySelector('#projSearch').addEventListener('keyup', projectSearch);
 };
 // *** Initializers *** //
 const init = () => {
@@ -416,9 +489,10 @@ const init = () => {
     handleButtonEventsProjects();
     profileCardBuilder();
     } else {
+    profileCardBuilder();
     pinnedRepoBuilder(users);
     handleButtonEventsIndex();
-    profileCardBuilder();
+    
     }
   };
 
