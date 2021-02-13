@@ -101,7 +101,7 @@ const profileCardBuilder = () => {
   let domString = `
   <img
   class="dino-logo img-fluid"
-  src="./dinoslogo.jpg"
+  src="./dinoprofile.png"
   alt="picture of a dinosaur"
   id="aboutMeOpen"
 />
@@ -128,7 +128,7 @@ const profileCardBuilder = () => {
       class="icon-image"
       src="./iconfinder_mail_115714.png"
       alt=""
-    />D1n0boi74@paleogeographic.mail
+    />D1n0boi74@paleo.mail
   </li>
   <li>
     <img

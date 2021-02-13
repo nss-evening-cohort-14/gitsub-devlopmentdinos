@@ -6,17 +6,15 @@ body {
 }
 /* Overview Page Start */
 nav {
-  border: 2px solid red;
 }
 .master-container {
   width: 100%;
   height: 100%;
 }
 .profile-container {
-  border: 2px solid red;
 }
 .left-container {
-  width: 25%;
+  width: 20%;
   height: auto;
 }
 .profile-container {
@@ -39,10 +37,11 @@ nav {
   height: 40%;
 }
 .dino-logo {
+  background-color: cornsilk;
   height: 250px;
-  width: 300px;
+  width: 90%;
   border-radius: 50%;
-  margin: 20px 0 30px 28px;
+  margin: auto;
   cursor: pointer;
 }
 .btn-group {
@@ -64,6 +63,7 @@ nav {
   line-height: 2;
 }
 .icon-image {
+  color: white;
   margin: 0 10px;
   width: 15px;
   height: 15px;
