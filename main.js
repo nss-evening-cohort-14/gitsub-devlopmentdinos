@@ -91,7 +91,7 @@ const projectBuilder = (array) => {
   // const increaseUpdateTime = () => {
     for (let i = 0; i < element.length; i++) {
         const timeToChange = users[0].projects[i].updatedTime;
-        
+        here is 
       };
       console.log(timeToChange);
   // array.forEach((element) => {
