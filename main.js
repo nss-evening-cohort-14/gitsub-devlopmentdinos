@@ -85,31 +85,6 @@ const printToDom = (divId, textToPrint) => {
 
 // Function to build list of created projects and print to DOM
 const projectBuilder = (array) => {
-  // expirement start
-  
-  
-  // const increaseUpdateTime = () => {
-    for (let i = 0; i < element.length; i++) {
-        const timeToChange = users[0].projects[i].updatedTime;
-        here is 
-      };
-      console.log(timeToChange);
-  // array.forEach((element) => {
-  //   element.projects.forEach((arg) => {
-  
-  //   const projectsObj = {
-  //     projectName,
-  //     projectDescription,
-  //     updatedTime,
-  //   };
-  
-  //   if (projectDescription.length === 0) {
-  //     projectsObj.projectDescription = "No description";
-  //   }
-  
-  //   users[0].projects.push(projectsObj);
-
-  // expirement end
   let domString = "";
   array.forEach((element) => {
     element.projects.forEach((arg) => {
@@ -391,6 +366,7 @@ const projectSearch = (e) => {
 };
 //  End Projects Search Bar function
 // Start Projects Sort Feature
+// Sort by Name
 const sortProjectsName = () => {
   let sortNameString = "";
   const sortedNameArray = [];
@@ -420,7 +396,7 @@ const sortProjectsName = () => {
   printToDom("#projectCards", sortNameString);
   });
 };
-
+// Sort by Time Updated
 const sortProjectsTime = () => {
   let sortTimeString = "";
   const sortedTimeArray = [];
