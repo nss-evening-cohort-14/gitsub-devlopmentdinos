@@ -32,27 +32,27 @@ const users = [
       {
         projectName: "my-goals",
         projectDescription: "I want to keep my progress on track. I am keeping my goals up to date and organized with this project.",
-        updatedTime: "44",
+        updatedTime: new Date("Feb 11, 2021"),
       },
       {
         projectName: "Sorting Hat",
         projectDescription: "A little fun inside the fictional world of Herry Porter. Users can find out what social club they belong to. Fun for all ages.",
-        updatedTime: "234",
+        updatedTime: new Date("Oct 31, 2020"),
       },
       {
         projectName: "Personal Bio",
         projectDescription: "Working on my personal bio page. Showing off my best work.",
-        updatedTime: "109",
+        updatedTime: new Date("Jan 28,2021"),
       },
       {
         projectName: "Damage Control",
         projectDescription: "This project is a simple page to keep users calm in the event of a missed appointment. Everyone can use a damage control page.",
-        updatedTime: "46,784",
+        updatedTime: new Date("Nov 8,2020"),
       },
       {
         projectName: "Sexy Code",
         projectDescription: "Dinos love to look their best. Dino code projects are also expected to uphold the Dino appearance standard. Sexy Dinos have sexy code.",
-        updatedTime: "48",
+        updatedTime: new Date("Feb 21,2020"),
       },
     ],
     packages: [
@@ -92,7 +92,7 @@ const projectBuilder = (array) => {
                       <div class="card-header">${arg.projectName}</div>
                       <div class="card-body">
                         <p class="card-text">${arg.projectDescription}</p>
-                        <p class="card-text">Updated ${arg.updatedTime} minutes ago</p>
+                        <p class="card-text">Updated ${arg.updatedTime}</p>
                       </div>
                       
                     </div>`;
@@ -321,7 +321,7 @@ const getProjectsFormInfo = (e) => {
   const projectName = document.querySelector("#projectName").value;
   const projectDescription = document.querySelector("#projectDescription")
     .value;
-  const updatedTime = "1"
+  const updatedTime = new Date();
 
   const projectsObj = {
     projectName,
@@ -389,36 +389,56 @@ const sortProjectsName = () => {
                       <div class="card-header">${element[i].projectName}</div>
                       <div class="card-body">
                         <p class="card-text">${element[i].projectDescription}</p>
-                        <p class="card-text">Updated ${element[i].updatedTime} minutes ago</p>
+                        <p class="card-text">Updated ${element[i].updatedTime}</p>
                       </div>
                     </div>`;
     };
   printToDom("#projectCards", sortNameString);
   });
 };
-// Sort by Time Updated
-const sortProjectsTime = () => {
+// Sort by Time Updated Oldest first
+const sortProjectsTime = (e) => {
   let sortTimeString = "";
   const sortedTimeArray = [];
 
-const sortedOrder = users[0].projects.sort((a, b) =>{
+  const buttonId = e.target.id;
+
+  if (buttonId === "sortTimeByOldest") {
+    const sortedOrder = users[0].projects.sort((a, b) =>{
       return a.updatedTime - b.updatedTime;
     });
-
-
-  sortedTimeArray.push(sortedOrder);
-  sortedTimeArray.forEach((element) => {
-    for (let i = 0; i < element.length; i++) {
-      sortTimeString += `<div class="card mt-3">
-                      <div class="card-header">${element[i].projectName}</div>
-                      <div class="card-body">
-                        <p class="card-text">${element[i].projectDescription}</p>
-                        <p class="card-text">Updated ${element[i].updatedTime} minutes ago</p>
-                      </div>
-                    </div>`;
-    };
-  printToDom("#projectCards", sortTimeString);
-  });
+    sortedTimeArray.push(sortedOrder);
+    sortedTimeArray.forEach((element) => {
+      for (let i = 0; i < element.length; i++) {
+        sortTimeString += `<div class="card mt-3">
+                            <div class="card-header">${element[i].projectName}</div>
+                            <div class="card-body">
+                            <p class="card-text">${element[i].projectDescription}</p>
+                            <p class="card-text">Updated ${element[i].updatedTime}</p>
+                            </div>
+                            </div>`;
+      };
+      printToDom("#projectCards", sortTimeString);
+    });
+  } 
+  if (buttonId === "sortTimeByNewest") {
+    const sortedOrder = users[0].projects.sort((a, b) =>{
+      return b.updatedTime - a.updatedTime;
+    });
+    sortedTimeArray.push(sortedOrder);
+    sortedTimeArray.forEach((element) => {
+      for (let i = 0; i < element.length; i++) {
+        sortTimeString += `<div class="card mt-3">
+                          <div class="card-header">${element[i].projectName}</div>
+                          <div class="card-body">
+                          <p class="card-text">${element[i].projectDescription}</p>
+                          <p class="card-text">Updated ${element[i].updatedTime}</p>
+                          </div>
+                          </div>`;
+      };
+      printToDom("#projectCards", sortTimeString);
+    });
+  }
 };
 // End Project Sort Feature
 // Function to submit new Repo Form
@@ -607,7 +627,8 @@ const handleButtonEventsProjects = () => {
     .querySelector("#projSearch")
     .addEventListener("keyup", projectSearch);
   document.querySelector("#sortName").addEventListener("click", sortProjectsName);
-  document.querySelector("#sortTime").addEventListener("click", sortProjectsTime);
+  document.querySelector("#sortTimeByOldest").addEventListener("click", sortProjectsTime);
+  document.querySelector("#sortTimeByNewest").addEventListener("click", sortProjectsTime);
 };
 // *** Initializers *** //
 const init = () => {
