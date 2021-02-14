@@ -32,45 +32,45 @@ const users = [
       {
         projectName: "my-goals",
         projectDescription: "I want to keep my progress on track. I am keeping my goals up to date and organized with this project.",
-        updatedTime: "44 minutes ago",
+        updatedTime: "44",
       },
       {
         projectName: "Sorting Hat",
         projectDescription: "A little fun inside the fictional world of Herry Porter. Users can find out what social club they belong to. Fun for all ages.",
-        updatedTime: "234 minutes ago",
+        updatedTime: "234",
       },
       {
         projectName: "Personal Bio",
         projectDescription: "Working on my personal bio page. Showing off my best work.",
-        updatedTime: "109 minutes ago",
+        updatedTime: "109",
       },
       {
         projectName: "Damage Control",
         projectDescription: "This project is a simple page to keep users calm in the event of a missed appointment. Everyone can use a damage control page.",
-        updatedTime: "46784 minutes ago",
+        updatedTime: "46,784",
       },
       {
         projectName: "Sexy Code",
         projectDescription: "Dinos love to look their best. Dino code projects are also expected to uphold the Dino appearance standard. Sexy Dinos have sexy code.",
-        updatedTime: "48 minutes ago",
+        updatedTime: "48",
       },
     ],
     packages: [
       {
-        packageName: "Package 1",
-        packageDescription: "Description 1",
+        packageName: 'JavaScript',
+        packageDescription: 'Node Package Manager'
       },
       {
-        packageName: "Package 2",
-        packageDescription: "Description 2",
+        packageName: 'Ruby',
+        packageDescription: 'RubyGems Pacakage Manager'
       },
       {
-        packageName: "Package 3",
-        packageDescription: "Description 3",
+        packageName: 'Java',
+        packageDescription: 'Gradle build Automation Tool for Java'
       },
       {
-        packageName: "Package 4",
-        packageDescription: "Description 4",
+        packageName: '.NET',
+        packageDescription: 'NuGet Package Management for .NET'
       },
     ],
   },
@@ -82,12 +82,34 @@ const printToDom = (divId, textToPrint) => {
 };
 
 // *** HTML Builder Functions *** //
-// Get Package Form Info
-// const packageForm = (e) => {
-//   e.preventDefault();
 
 // Function to build list of created projects and print to DOM
 const projectBuilder = (array) => {
+  // expirement start
+  
+  
+  // const increaseUpdateTime = () => {
+    for (let i = 0; i < element.length; i++) {
+        const timeToChange = users[0].projects[i].updatedTime;
+        
+      };
+      console.log(timeToChange);
+  // array.forEach((element) => {
+  //   element.projects.forEach((arg) => {
+  
+  //   const projectsObj = {
+  //     projectName,
+  //     projectDescription,
+  //     updatedTime,
+  //   };
+  
+  //   if (projectDescription.length === 0) {
+  //     projectsObj.projectDescription = "No description";
+  //   }
+  
+  //   users[0].projects.push(projectsObj);
+
+  // expirement end
   let domString = "";
   array.forEach((element) => {
     element.projects.forEach((arg) => {
@@ -95,7 +117,7 @@ const projectBuilder = (array) => {
                       <div class="card-header">${arg.projectName}</div>
                       <div class="card-body">
                         <p class="card-text">${arg.projectDescription}</p>
-                        <p class="card-text">Updated ${arg.updatedTime}</p>
+                        <p class="card-text">Updated ${arg.updatedTime} minutes ago</p>
                       </div>
                       
                     </div>`;
@@ -247,11 +269,14 @@ const pinnedRepoBuilder = (array) => {
 // Function build list of repos
 
 const repoBuilders = (user) => {
-  let domString = "";
-  user.forEach((element) => {
-    element.repos.forEach((taco) => {
+  let domString = '';
+  user.forEach(element => {
+    element.repos.forEach((taco, i) => {
       domString += `<div class="card">
-      <div class="card-header">${taco.repoName}</div>
+      <div class="card-header d-flex">
+      <span class="material-icons align-items-end" id="star${i}">star_border</span>
+      ${taco.repoName}
+      </div>
       <div class="card-body">
         <p class="card-text">${taco.repoDescription}</p>
         <button type="button" class="btn btn-secondary tag">${taco.repoTags[0]}</button>
@@ -269,6 +294,7 @@ const repoBuilders = (user) => {
         repoTag[i].classList.add("hidden");
       }
     }
+
   });
 };
 // ********** END **********
@@ -320,7 +346,7 @@ const getProjectsFormInfo = (e) => {
   const projectName = document.querySelector("#projectName").value;
   const projectDescription = document.querySelector("#projectDescription")
     .value;
-  const updatedTime = "1 minute ago"
+  const updatedTime = "1"
 
   const projectsObj = {
     projectName,
@@ -356,13 +382,69 @@ const projectSearch = (e) => {
                       <div class="card-header">${element[i].projectName}</div>
                       <div class="card-body">
                         <p class="card-text">${element[i].projectDescription}</p>
+                        <p class="card-text">Updated ${element[i].updatedTime} minutes ago</p>
                       </div>
                     </div>`;
     }
   });
   printToDom("#projectCards", newDomString);
 };
+//  End Projects Search Bar function
+// Start Projects Sort Feature
+const sortProjectsName = () => {
+  let sortNameString = "";
+  const sortedNameArray = [];
 
+  const sortedOrder = users[0].projects.sort((a, b) => {
+    if (a.projectName.toLowerCase() < b.projectName.toLowerCase()) {
+      return -1;
+    }
+    if (a.projectName.toLowerCase() > b.projectName.toLowerCase()) {
+      return 1;
+    } 
+    return 0;
+  });
+  
+
+  sortedNameArray.push(sortedOrder);
+  sortedNameArray.forEach((element) => {
+    for (let i = 0; i < element.length; i++) {
+      sortNameString += `<div class="card mt-3">
+                      <div class="card-header">${element[i].projectName}</div>
+                      <div class="card-body">
+                        <p class="card-text">${element[i].projectDescription}</p>
+                        <p class="card-text">Updated ${element[i].updatedTime} minutes ago</p>
+                      </div>
+                    </div>`;
+    };
+  printToDom("#projectCards", sortNameString);
+  });
+};
+
+const sortProjectsTime = () => {
+  let sortTimeString = "";
+  const sortedTimeArray = [];
+
+const sortedOrder = users[0].projects.sort((a, b) =>{
+      return a.updatedTime - b.updatedTime;
+    });
+
+
+  sortedTimeArray.push(sortedOrder);
+  sortedTimeArray.forEach((element) => {
+    for (let i = 0; i < element.length; i++) {
+      sortTimeString += `<div class="card mt-3">
+                      <div class="card-header">${element[i].projectName}</div>
+                      <div class="card-body">
+                        <p class="card-text">${element[i].projectDescription}</p>
+                        <p class="card-text">Updated ${element[i].updatedTime} minutes ago</p>
+                      </div>
+                    </div>`;
+    };
+  printToDom("#projectCards", sortTimeString);
+  });
+};
+// End Project Sort Feature
 // Function to submit new Repo Form
 const newRepoForm = (e) => {
   e.preventDefault();
@@ -401,15 +483,19 @@ const newRepoForm = (e) => {
   repoBuilders(users);
 
   // Reset the form //
-  document.querySelector("form").reset();
+  document.querySelector('form').reset();
+  repoStar();
 };
 
 // Repos Searchbar Builder Function
 const repoSearchBuilder = (taco) => {
-  let newDomString = "";
-  taco.forEach((element) => {
-    newDomString += `<div class="card">
-  <div class="card-header">${element.repoName}</div>
+let newDomString = '';
+taco.forEach((element, i) => {
+  newDomString += `<div class="card">
+  <div class="card-header">
+  <span class="material-icons align-items-end" id="star${i}">star_border</span>
+  ${element.repoName}
+  </div>
   <div class="card-body">
     <p class="card-text">${element.repoDescription}</p>
     <button type="button" class="btn btn-secondary tag">${element.repoTags[0]}</button>
@@ -427,7 +513,8 @@ const repoSearchBuilder = (taco) => {
     }
   }
 };
-
+    
+// Function to search and filter through repos
 const repoSearch = (e) => {
   const searchResult = e.target.value.toLowerCase();
   const filteredRepos = users[0].repos.filter((repo) => {
@@ -436,7 +523,47 @@ const repoSearch = (e) => {
       repo.repoDescription.toLowerCase().includes(searchResult)
     );
   });
-  repoSearchBuilder(filteredRepos);
+  repoSearchBuilder(filteredRepos)
+  repoStar();
+}
+
+// Function to target the Repo Form Star
+const repoStar = () => {
+  const repoStarId = document.querySelectorAll('.material-icons');
+  for (let i = 0; i < repoStarId.length; i++) {
+    repoStarId[i].addEventListener('click', function() {
+      if (repoStarId[i].innerHTML === 'star_border') {
+        repoStarId[i].innerHTML = 'star'
+      } else {
+        repoStarId[i].innerHTML = 'star_border'
+      }
+    })
+  };
+}
+// Search Packages
+const searchPackages = (e) => {
+  let domString = '';
+  const packArray = [];
+  const searchCriteria = e.target.value.toLowerCase();
+  const filterPackages = users[0].packages.filter( package => {
+    return (
+      package.packageName.toLowerCase().includes(searchCriteria) ||
+      package.packageDescription.toLowerCase().includes(searchCriteria)
+    );
+  });
+
+  packArray.push(filterPackages);
+  packArray.forEach((element) => {
+    for (let i = 0; i < element.length; i++)
+    domString += `<div class="card border-dark mb-3" style="width: 25rem">
+    <div class="card-header">${element[i].packageName}</div>
+    <div class="card-body">
+    <p class="card-text">${element[i].packageDescription}</p>
+    <button type="button" class="btn btn-secondary">Delete</button>
+    </div>
+ </div>`;
+  })
+printToDom('#packageCard', domString);
 };
 
 // Get Package Form Info
@@ -473,14 +600,11 @@ const deletePackage = (e) => {
 // *** Event Listeners *** //
 
 // Package Event Listener
-const handleButtonPackages = () => {
-  document
-    .querySelector("#package-form")
-    .addEventListener("submit", packageForm);
-  document
-    .querySelector("#packageCard")
-    .addEventListener("click", deletePackage);
-};
+  const handleButtonPackages = () => {
+    document.querySelector('#package-form').addEventListener('submit', packageForm);
+    document.querySelector('#packageCard').addEventListener('click', deletePackage);
+    document.querySelector('#packSearch').addEventListener('keyup', searchPackages);
+  };
 
 // Index Event Listener //
 const handleButtonEventsIndex = () => {
@@ -490,13 +614,13 @@ const handleButtonEventsIndex = () => {
   document
     .querySelector("#pinnedReposForm")
     .addEventListener("submit", getPinnedRepoFormInfo);
-  document.querySelector("#aboutMeOpen").addEventListener("click", aboutMeOpen);
+  // document.querySelector("#aboutMeOpen").addEventListener("click", aboutMeOpen);
 };
 // Repos Event Listener //
 const handleButtonEventsRepos = () => {
-  document.querySelector("#reposForm").addEventListener("submit", newRepoForm);
-  document.querySelector("#searchBar").addEventListener("keyup", repoSearch);
-};
+  document.querySelector('#reposForm').addEventListener('submit', newRepoForm);
+  document.querySelector('#searchBar').addEventListener('keyup', repoSearch);
+};  
 
 // Projects Event Listener //
 const handleButtonEventsProjects = () => {
@@ -506,6 +630,8 @@ const handleButtonEventsProjects = () => {
   document
     .querySelector("#projSearch")
     .addEventListener("keyup", projectSearch);
+  document.querySelector("#sortName").addEventListener("click", sortProjectsName);
+  document.querySelector("#sortTime").addEventListener("click", sortProjectsTime);
 };
 // *** Initializers *** //
 const init = () => {
@@ -517,7 +643,8 @@ const init = () => {
     repoBuilders(users);
     handleButtonEventsRepos();
     profileCardBuilder();
-  } else if (window.location.pathname === "/projects.html") {
+    repoStar();
+    } else if (window.location.pathname === '/projects.html') {
     projectBuilder(users);
     handleButtonEventsProjects();
     profileCardBuilder();
