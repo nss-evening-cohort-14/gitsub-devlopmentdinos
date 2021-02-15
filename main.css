@@ -165,8 +165,12 @@ a {
   color: #1ea0f7;
 }
 .star {
+  position: absolute;
+  color: #1ea0f7;
+  right: 0;
   cursor: pointer;
   color: gold;
+  margin-right: 5px;
 }
 ul .material-icons {
   color: white;
@@ -183,6 +187,13 @@ ul .material-icons {
   justify-self: end;
 }
 
+/* Projects Page search and sort */
+.search-container {
+  position: relative;
+}
+.form-control {
+  width: 100%;
+}
 /* Overview Page End */
 footer {
   margin: 40px 0;
