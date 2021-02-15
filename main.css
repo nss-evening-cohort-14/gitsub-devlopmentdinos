@@ -151,7 +151,18 @@ a {
   cursor: pointer;
   color: gold;
 }
-
+/* Projects Page search and sort */
+.search-container {
+  position: relative;
+}
+.form-control {
+  width: 100%;
+}
+.material-icons {
+  position: absolute;
+  color: #1ea0f7;
+  right: 0;
+}
 /* Overview Page End */
 footer {
   margin: 40px 0;

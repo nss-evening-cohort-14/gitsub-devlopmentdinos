@@ -30,24 +30,29 @@ const users = [
     ],
     projects: [
       {
-        projectName: "Project 1",
-        projectDescription: "Fancy project",
+        projectName: "my-goals",
+        projectDescription: "I want to keep my progress on track. I am keeping my goals up to date and organized with this project.",
+        updatedTime: new Date("Feb 11, 2021"),
       },
       {
-        projectName: "Project 2",
-        projectDescription: "Fancier project",
+        projectName: "Sorting Hat",
+        projectDescription: "A little fun inside the fictional world of Herry Porter. Users can find out what social club they belong to. Fun for all ages.",
+        updatedTime: new Date("Oct 31, 2020"),
       },
       {
-        projectName: "Project 3",
-        projectDescription: "Fantastic project",
+        projectName: "Personal Bio",
+        projectDescription: "Working on my personal bio page. Showing off my best work.",
+        updatedTime: new Date("Jan 28,2021"),
       },
       {
-        projectName: "Project 4",
-        projectDescription: "Boss project",
+        projectName: "Damage Control",
+        projectDescription: "This project is a simple page to keep users calm in the event of a missed appointment. Everyone can use a damage control page.",
+        updatedTime: new Date("Nov 8,2020"),
       },
       {
-        projectName: "Project 5",
-        projectDescription: "Awesome project",
+        projectName: "Sexy Code",
+        projectDescription: "Dinos love to look their best. Dino code projects are also expected to uphold the Dino appearance standard. Sexy Dinos have sexy code.",
+        updatedTime: new Date("Feb 21,2020"),
       },
     ],
     packages: [
@@ -87,7 +92,9 @@ const projectBuilder = (array) => {
                       <div class="card-header">${arg.projectName}</div>
                       <div class="card-body">
                         <p class="card-text">${arg.projectDescription}</p>
+                        <p class="card-text">Updated ${arg.updatedTime}</p>
                       </div>
+                      
                     </div>`;
     });
     printToDom("#projectCards", domString);
@@ -314,10 +321,12 @@ const getProjectsFormInfo = (e) => {
   const projectName = document.querySelector("#projectName").value;
   const projectDescription = document.querySelector("#projectDescription")
     .value;
+  const updatedTime = new Date();
 
   const projectsObj = {
     projectName,
     projectDescription,
+    updatedTime,
   };
 
   if (projectDescription.length === 0) {
@@ -348,13 +357,90 @@ const projectSearch = (e) => {
                       <div class="card-header">${element[i].projectName}</div>
                       <div class="card-body">
                         <p class="card-text">${element[i].projectDescription}</p>
+                        <p class="card-text">Updated ${element[i].updatedTime} minutes ago</p>
                       </div>
                     </div>`;
     }
   });
   printToDom("#projectCards", newDomString);
 };
+//  End Projects Search Bar function
+// Start Projects Sort Feature
+// Sort by Name
+const sortProjectsName = () => {
+  let sortNameString = "";
+  const sortedNameArray = [];
 
+  const sortedOrder = users[0].projects.sort((a, b) => {
+    if (a.projectName.toLowerCase() < b.projectName.toLowerCase()) {
+      return -1;
+    }
+    if (a.projectName.toLowerCase() > b.projectName.toLowerCase()) {
+      return 1;
+    } 
+    return 0;
+  });
+  
+
+  sortedNameArray.push(sortedOrder);
+  sortedNameArray.forEach((element) => {
+    for (let i = 0; i < element.length; i++) {
+      sortNameString += `<div class="card mt-3">
+                      <div class="card-header">${element[i].projectName}</div>
+                      <div class="card-body">
+                        <p class="card-text">${element[i].projectDescription}</p>
+                        <p class="card-text">Updated ${element[i].updatedTime}</p>
+                      </div>
+                    </div>`;
+    };
+  printToDom("#projectCards", sortNameString);
+  });
+};
+// Sort by Time Updated Oldest first
+const sortProjectsTime = (e) => {
+  let sortTimeString = "";
+  const sortedTimeArray = [];
+
+  const buttonId = e.target.id;
+
+  if (buttonId === "sortTimeByOldest") {
+    const sortedOrder = users[0].projects.sort((a, b) =>{
+      return a.updatedTime - b.updatedTime;
+    });
+    sortedTimeArray.push(sortedOrder);
+    sortedTimeArray.forEach((element) => {
+      for (let i = 0; i < element.length; i++) {
+        sortTimeString += `<div class="card mt-3">
+                            <div class="card-header">${element[i].projectName}</div>
+                            <div class="card-body">
+                            <p class="card-text">${element[i].projectDescription}</p>
+                            <p class="card-text">Updated ${element[i].updatedTime}</p>
+                            </div>
+                            </div>`;
+      };
+      printToDom("#projectCards", sortTimeString);
+    });
+  } 
+  if (buttonId === "sortTimeByNewest") {
+    const sortedOrder = users[0].projects.sort((a, b) =>{
+      return b.updatedTime - a.updatedTime;
+    });
+    sortedTimeArray.push(sortedOrder);
+    sortedTimeArray.forEach((element) => {
+      for (let i = 0; i < element.length; i++) {
+        sortTimeString += `<div class="card mt-3">
+                          <div class="card-header">${element[i].projectName}</div>
+                          <div class="card-body">
+                          <p class="card-text">${element[i].projectDescription}</p>
+                          <p class="card-text">Updated ${element[i].updatedTime}</p>
+                          </div>
+                          </div>`;
+      };
+      printToDom("#projectCards", sortTimeString);
+    });
+  }
+};
+// End Project Sort Feature
 // Function to submit new Repo Form
 const newRepoForm = (e) => {
   e.preventDefault();
@@ -524,7 +610,7 @@ const handleButtonEventsIndex = () => {
   document
     .querySelector("#pinnedReposForm")
     .addEventListener("submit", getPinnedRepoFormInfo);
-  document.querySelector("#aboutMeOpen").addEventListener("click", aboutMeOpen);
+  // document.querySelector("#aboutMeOpen").addEventListener("click", aboutMeOpen);
 };
 // Repos Event Listener //
 const handleButtonEventsRepos = () => {
@@ -540,6 +626,9 @@ const handleButtonEventsProjects = () => {
   document
     .querySelector("#projSearch")
     .addEventListener("keyup", projectSearch);
+  document.querySelector("#sortName").addEventListener("click", sortProjectsName);
+  document.querySelector("#sortTimeByOldest").addEventListener("click", sortProjectsTime);
+  document.querySelector("#sortTimeByNewest").addEventListener("click", sortProjectsTime);
 };
 // *** Initializers *** //
 const init = () => {
