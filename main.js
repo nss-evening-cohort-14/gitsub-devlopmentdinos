@@ -160,7 +160,7 @@ const aboutMeOpen = (e) => {
     domString = `<div class="about-me m-3 p-4" id="about"><h5 class="about-me-file-text text-muted">d1n0boi/README.md</h5>
   <h4 class="about-me-title">Hi, I'm Dino &#129430 &#129429</h4>
   <hr>
-  <div class="card mb-3 p-3">
+  <div class="card about-me-main mb-3 p-3">
     <div class="aboutme-background-image-container card-img-top p-5">
       <h2 class="fs-1">Dino Dinosaurus</h2>
       <h4 class="text-muted">Software Engineer, Content Creator, Prehistoric Lizard</h4>
@@ -170,15 +170,14 @@ const aboutMeOpen = (e) => {
     </div>
     <div class="mb-3 aboutme-bottom">
       <div class="row g-0">
-        <div class="col-md-4">
-        <img src="./img/klipartz.com (1).png" style="width: 250px; height: 200px;" alt="chibi-rex" class="me-5">
+        <div class="col-md-4 chibi-dino-container">
         </div>
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title">Find me around the globe &#127758 &#127756 :</h5>
             <hr>
             <ul>
-            <li>Streaming on <a href="">Twitch.tv</a></li>
+            <li>Streaming on <a href="https://www.twitch.tv/" target="_blank">twitch.tv</a></li>
             <li>Tinkering with Javascript on <a href="https://jsfiddle.net/" target="_blank">jsfiddle</a></li>
             <li>Creating exciting new tech on <a href="https://github.com/nashville-software-school" target="_blank">GitHub</a></li>
             </ul>
