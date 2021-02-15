@@ -7,12 +7,14 @@
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
     crossorigin="anonymous"
   />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="main.css" />
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GitSub Packages</title>
+  <title>GitSub | Projects</title>
 </head>
 <body>
 <div class="master-container d-flex flex-row flex-nowrap">
@@ -21,7 +23,7 @@
     </div>
   </div>
   <div class="right-container">
-    <nav class="navbar m-3 text-light">
+    <nav class="navbargit navbar m-3 text-light">
       <ul class="nav">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="./index.html">Overview</a>
@@ -36,13 +38,28 @@
           <a class="nav-link" href="./packages.html">Packages</a>
         </li>
       </ul>
+      <div class="logo-image-container"><a href="#index.html"><img class="gitsub-logo" src="./img/dinoslogo.jpg" alt=""></a></div>
     </nav>
     
-    <div class="search-container m-3 fa fa-search" id="projectSearch">
+    <!-- <div class="search-container m-3 fa fa-search" id="projectSearch">
       <input type="text" name="projectSearch" id="projSearch"
         placeholder="Search your projects"/>
+    </div> -->
+    <div class="searchFeatures d-flex justify-content-between">
+      <div class="search-container m-3 w-25 d-flex" id="projectSearch">
+        <input type="text" class="form-control" name="projectSearch" id="projSearch" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Search your projects">
+        <span class="material-icons fs-1">search</span>
+      </div>
+      <div class="dropdown m-3 d-flex">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Sort projects
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><button class="dropdown-item" id="sortName">By Name</button></li>
+          <li><button class="dropdown-item" id="sortTimeByOldest">By Time Created (Precambrian first)</button></li>
+          <li><button class="dropdown-item" id="sortTimeByNewest">By Time Created (Holocene first)</button></li>
+        </ul>
+      </div>
     </div>
-    
     <div class="data-container m-3 d-flex flex-column flex-nowrap" id="projectCards"></div>
       <!-- Card classes for data containers to be utilized in JS Builders -->
 

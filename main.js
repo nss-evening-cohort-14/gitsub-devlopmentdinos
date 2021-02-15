@@ -4,68 +4,73 @@ const users = [
     userName: "Dino Dinosaurus",
     repos: [
       {
-        repoName: "Repo 1",
-        repoDescription: "Repo Description",
-        repoTags: ["Tag 2", "Tag 3"],
+        repoName: "ColorFlipper",
+        repoDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        repoTags: ["Javascript", "Learning"],
         isPinned: true,
       },
       {
-        repoName: "Repo 2",
-        repoDescription: "2nd Description",
-        repoTags: ["Tag Button 1", "Tag Button 2"],
+        repoName: "SortingHat",
+        repoDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        repoTags: ["Application", "Learning", "Classwork"],
         isPinned: true,
       },
       {
-        repoName: "Repo 3",
-        repoDescription: "3rd descript",
-        repoTags: ["Tag 1", "Tag 2"],
+        repoName: "pet-adoption",
+        repoDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        repoTags: ["Javascript", "Bootstrap"],
         isPinned: false,
       },
       {
-        repoName: "Repo 4",
-        repoDescription: "4th descript",
-        repoTags: ["Tag 1", "Tag 2"],
+        repoName: "pieBuilder",
+        repoDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        repoTags: ["Learning", "Bootstrap", "Fun", "CSS"],
         isPinned: false,
       },
     ],
     projects: [
       {
-        projectName: "Project 1",
-        projectDescription: "Fancy project",
+        projectName: "my-goals",
+        projectDescription: "I want to keep my progress on track. I am keeping my goals up to date and organized with this project.",
+        updatedTime: new Date("Feb 11, 2021"),
       },
       {
-        projectName: "Project 2",
-        projectDescription: "Fancier project",
+        projectName: "Sorting Hat",
+        projectDescription: "A little fun inside the fictional world of Herry Porter. Users can find out what social club they belong to. Fun for all ages.",
+        updatedTime: new Date("Oct 31, 2020"),
       },
       {
-        projectName: "Project 3",
-        projectDescription: "Fantastic project",
+        projectName: "Personal Bio",
+        projectDescription: "Working on my personal bio page. Showing off my best work.",
+        updatedTime: new Date("Jan 28,2021"),
       },
       {
-        projectName: "Project 4",
-        projectDescription: "Boss project",
+        projectName: "Damage Control",
+        projectDescription: "This project is a simple page to keep users calm in the event of a missed appointment. Everyone can use a damage control page.",
+        updatedTime: new Date("Nov 8,2020"),
       },
       {
-        projectName: "Project 5",
-        projectDescription: "Awesome project",
+        projectName: "Sexy Code",
+        projectDescription: "Dinos love to look their best. Dino code projects are also expected to uphold the Dino appearance standard. Sexy Dinos have sexy code.",
+        updatedTime: new Date("Feb 21,2020"),
       },
     ],
     packages: [
       {
-        packageName: 'JavaScript',
-        packageDescription: 'Node Package Manager'
+        packageName: "JavaScript",
+        packageDescription: "Node Package Manager",
       },
       {
-        packageName: 'Ruby',
-        packageDescription: 'RubyGems Pacakage Manager'
+        packageName: "Ruby",
+        packageDescription: "RubyGems Pacakage Manager",
       },
       {
-        packageName: 'Java',
-        packageDescription: 'Gradle build Automation Tool for Java'
+        packageName: "Java",
+        packageDescription: "Gradle build Automation Tool for Java",
       },
       {
-        packageName: '.NET',
-        packageDescription: 'NuGet Package Management for .NET'
+        packageName: ".NET",
+        packageDescription: "NuGet Package Management for .NET",
       },
     ],
   },
@@ -87,7 +92,9 @@ const projectBuilder = (array) => {
                       <div class="card-header">${arg.projectName}</div>
                       <div class="card-body">
                         <p class="card-text">${arg.projectDescription}</p>
+                        <p class="card-text">Updated ${arg.updatedTime}</p>
                       </div>
+                      
                     </div>`;
     });
     printToDom("#projectCards", domString);
@@ -98,7 +105,7 @@ const profileCardBuilder = () => {
   let domString = `
   <img
   class="dino-logo img-fluid"
-  src="./dinoslogo.jpg"
+  src="./img/dinoprofile.png"
   alt="picture of a dinosaur"
   id="aboutMeOpen"
 />
@@ -112,29 +119,33 @@ const profileCardBuilder = () => {
   <button class="btn btn-primary m-1 profile-btn" type="submit">Share</button>
   <button class="btn btn-primary m-1 profile-btn" type="submit">Like</button>
 </div>
+<div class="profile-followers p-2 d-flex flex-row justify-content-evenly align-items-flex-end">
+<div>1.5b <span class="text-muted">followers</span></div>
+<b>&middot;</b>
+<div>324 <span class="text-muted">following</span></div>
+<b>&middot;</b>
+<div class="text-center"><span class="material-icons profile-star">star_border</span></div>47k
+</div>
 <ul class="profile-links">
   <li>
-    <img
-      class="icon-image"
-      src="./iconfinder_location_115718.png"
-      alt=""
-    />Pangea, Earth
+  <span class="material-icons material-icons-profile">
+  location_on
+  </span>Pangea, Earth
   </li>
   <li>
-    <img
-      class="icon-image"
-      src="./iconfinder_mail_115714.png"
-      alt=""
-    />D1n0boi74@paleogeographic.mail
+  <span class="material-icons material-icons-profile">
+  email
+  </span>D1n0boi74@paleo.mail
   </li>
   <li>
-    <img
-      class="icon-image"
-      src="./iconfinder_Dinosaur_367624.png"
-      alt=""
-    />Genus: Tyrannosaurus
+  <span class="material-icons material-icons-profile">
+  verified
+  </span> 
+  Tyrannosaurus
   </li>
 </ul>
+<hr>
+<span class="badge">PRO</span>
   `;
   printToDom("#profile-container", domString);
 };
@@ -160,7 +171,7 @@ const aboutMeOpen = (e) => {
     <div class="mb-3 aboutme-bottom">
       <div class="row g-0">
         <div class="col-md-4">
-        <img src="./klipartz.com (1).png" style="width: 250px; height: 200px;" alt="chibi-rex" class="me-5">
+        <img src="./img/klipartz.com (1).png" style="width: 250px; height: 200px;" alt="chibi-rex" class="me-5">
         </div>
         <div class="col-md-8">
           <div class="card-body">
@@ -237,8 +248,8 @@ const pinnedRepoBuilder = (array) => {
 // Function build list of repos
 
 const repoBuilders = (user) => {
-  let domString = '';
-  user.forEach(element => {
+  let domString = "";
+  user.forEach((element) => {
     element.repos.forEach((taco, i) => {
       domString += `<div class="card">
       <div class="card-header repo-ch d-flex">
@@ -262,7 +273,6 @@ const repoBuilders = (user) => {
         repoTag[i].classList.add("hidden");
       }
     }
-
   });
 };
 // ********** END **********
@@ -314,10 +324,12 @@ const getProjectsFormInfo = (e) => {
   const projectName = document.querySelector("#projectName").value;
   const projectDescription = document.querySelector("#projectDescription")
     .value;
+  const updatedTime = new Date();
 
   const projectsObj = {
     projectName,
     projectDescription,
+    updatedTime,
   };
 
   if (projectDescription.length === 0) {
@@ -348,13 +360,90 @@ const projectSearch = (e) => {
                       <div class="card-header">${element[i].projectName}</div>
                       <div class="card-body">
                         <p class="card-text">${element[i].projectDescription}</p>
+                        <p class="card-text">Updated ${element[i].updatedTime} minutes ago</p>
                       </div>
                     </div>`;
     }
   });
   printToDom("#projectCards", newDomString);
 };
+//  End Projects Search Bar function
+// Start Projects Sort Feature
+// Sort by Name
+const sortProjectsName = () => {
+  let sortNameString = "";
+  const sortedNameArray = [];
 
+  const sortedOrder = users[0].projects.sort((a, b) => {
+    if (a.projectName.toLowerCase() < b.projectName.toLowerCase()) {
+      return -1;
+    }
+    if (a.projectName.toLowerCase() > b.projectName.toLowerCase()) {
+      return 1;
+    } 
+    return 0;
+  });
+  
+
+  sortedNameArray.push(sortedOrder);
+  sortedNameArray.forEach((element) => {
+    for (let i = 0; i < element.length; i++) {
+      sortNameString += `<div class="card mt-3">
+                      <div class="card-header">${element[i].projectName}</div>
+                      <div class="card-body">
+                        <p class="card-text">${element[i].projectDescription}</p>
+                        <p class="card-text">Updated ${element[i].updatedTime}</p>
+                      </div>
+                    </div>`;
+    };
+  printToDom("#projectCards", sortNameString);
+  });
+};
+// Sort by Time Updated Oldest first
+const sortProjectsTime = (e) => {
+  let sortTimeString = "";
+  const sortedTimeArray = [];
+
+  const buttonId = e.target.id;
+
+  if (buttonId === "sortTimeByOldest") {
+    const sortedOrder = users[0].projects.sort((a, b) =>{
+      return a.updatedTime - b.updatedTime;
+    });
+    sortedTimeArray.push(sortedOrder);
+    sortedTimeArray.forEach((element) => {
+      for (let i = 0; i < element.length; i++) {
+        sortTimeString += `<div class="card mt-3">
+                            <div class="card-header">${element[i].projectName}</div>
+                            <div class="card-body">
+                            <p class="card-text">${element[i].projectDescription}</p>
+                            <p class="card-text">Updated ${element[i].updatedTime}</p>
+                            </div>
+                            </div>`;
+      };
+      printToDom("#projectCards", sortTimeString);
+    });
+  } 
+  if (buttonId === "sortTimeByNewest") {
+    const sortedOrder = users[0].projects.sort((a, b) =>{
+      return b.updatedTime - a.updatedTime;
+    });
+    sortedTimeArray.push(sortedOrder);
+    sortedTimeArray.forEach((element) => {
+      for (let i = 0; i < element.length; i++) {
+        sortTimeString += `<div class="card mt-3">
+                          <div class="card-header">${element[i].projectName}</div>
+                          <div class="card-body">
+                          <p class="card-text">${element[i].projectDescription}</p>
+                          <p class="card-text">Updated ${element[i].updatedTime}</p>
+                          </div>
+                          </div>`;
+      };
+      printToDom("#projectCards", sortTimeString);
+    });
+  }
+};
+// End Project Sort Feature
 // Function to submit new Repo Form
 const newRepoForm = (e) => {
   e.preventDefault();
@@ -393,15 +482,15 @@ const newRepoForm = (e) => {
   repoBuilders(users);
 
   // Reset the form //
-  document.querySelector('form').reset();
+  document.querySelector("form").reset();
   repoStar();
 };
 
 // Repos Searchbar Builder Function
 const repoSearchBuilder = (taco) => {
-let newDomString = '';
-taco.forEach((element, i) => {
-  newDomString += `<div class="card">
+  let newDomString = "";
+  taco.forEach((element, i) => {
+    newDomString += `<div class="card">
   <div class="card-header repo-ch">
   <span class="material-icons align-items-end star" id="star${i}">star_border</span>
   ${element.repoName}
@@ -423,7 +512,7 @@ taco.forEach((element, i) => {
     }
   }
 };
-    
+
 // Function to search and filter through repos
 const repoSearch = (e) => {
   const searchResult = e.target.value.toLowerCase();
@@ -433,29 +522,29 @@ const repoSearch = (e) => {
       repo.repoDescription.toLowerCase().includes(searchResult)
     );
   });
-  repoSearchBuilder(filteredRepos)
+  repoSearchBuilder(filteredRepos);
   repoStar();
-}
+};
 
 // Function to target the Repo Form Star
 const repoStar = () => {
-  const repoStarId = document.querySelectorAll('.material-icons');
+  const repoStarId = document.querySelectorAll(".material-icons");
   for (let i = 0; i < repoStarId.length; i++) {
-    repoStarId[i].addEventListener('click', function() {
-      if (repoStarId[i].innerHTML === 'star_border') {
-        repoStarId[i].innerHTML = 'star'
+    repoStarId[i].addEventListener("click", function () {
+      if (repoStarId[i].innerHTML === "star_border") {
+        repoStarId[i].innerHTML = "star";
       } else {
-        repoStarId[i].innerHTML = 'star_border'
+        repoStarId[i].innerHTML = "star_border";
       }
-    })
-  };
-}
+    });
+  }
+};
 // Search Packages
 const searchPackages = (e) => {
-  let domString = '';
+  let domString = "";
   const packArray = [];
   const searchCriteria = e.target.value.toLowerCase();
-  const filterPackages = users[0].packages.filter( package => {
+  const filterPackages = users[0].packages.filter((package) => {
     return (
       package.packageName.toLowerCase().includes(searchCriteria) ||
       package.packageDescription.toLowerCase().includes(searchCriteria)
@@ -465,15 +554,15 @@ const searchPackages = (e) => {
   packArray.push(filterPackages);
   packArray.forEach((element) => {
     for (let i = 0; i < element.length; i++)
-    domString += `<div class="card border-dark mb-3" style="width: 25rem">
+      domString += `<div class="card border-dark mb-3" style="width: 25rem">
     <div class="card-header">${element[i].packageName}</div>
     <div class="card-body">
     <p class="card-text">${element[i].packageDescription}</p>
     <button type="button" class="btn btn-secondary">Delete</button>
     </div>
  </div>`;
-  })
-printToDom('#packageCard', domString);
+  });
+  printToDom("#packageCard", domString);
 };
 
 // Get Package Form Info
@@ -510,11 +599,17 @@ const deletePackage = (e) => {
 // *** Event Listeners *** //
 
 // Package Event Listener
-  const handleButtonPackages = () => {
-    document.querySelector('#package-form').addEventListener('submit', packageForm);
-    document.querySelector('#packageCard').addEventListener('click', deletePackage);
-    document.querySelector('#packSearch').addEventListener('keyup', searchPackages);
-  };
+const handleButtonPackages = () => {
+  document
+    .querySelector("#package-form")
+    .addEventListener("submit", packageForm);
+  document
+    .querySelector("#packageCard")
+    .addEventListener("click", deletePackage);
+  document
+    .querySelector("#packSearch")
+    .addEventListener("keyup", searchPackages);
+};
 
 // Index Event Listener //
 const handleButtonEventsIndex = () => {
@@ -528,9 +623,9 @@ const handleButtonEventsIndex = () => {
 };
 // Repos Event Listener //
 const handleButtonEventsRepos = () => {
-  document.querySelector('#reposForm').addEventListener('submit', newRepoForm);
-  document.querySelector('#searchBar').addEventListener('keyup', repoSearch);
-};  
+  document.querySelector("#reposForm").addEventListener("submit", newRepoForm);
+  document.querySelector("#searchBar").addEventListener("keyup", repoSearch);
+};
 
 // Projects Event Listener //
 const handleButtonEventsProjects = () => {
@@ -540,6 +635,9 @@ const handleButtonEventsProjects = () => {
   document
     .querySelector("#projSearch")
     .addEventListener("keyup", projectSearch);
+  document.querySelector("#sortName").addEventListener("click", sortProjectsName);
+  document.querySelector("#sortTimeByOldest").addEventListener("click", sortProjectsTime);
+  document.querySelector("#sortTimeByNewest").addEventListener("click", sortProjectsTime);
 };
 // *** Initializers *** //
 const init = () => {
@@ -552,7 +650,7 @@ const init = () => {
     handleButtonEventsRepos();
     profileCardBuilder();
     repoStar();
-    } else if (window.location.pathname === '/projects.html') {
+  } else if (window.location.pathname === "/projects.html") {
     projectBuilder(users);
     handleButtonEventsProjects();
     profileCardBuilder();
