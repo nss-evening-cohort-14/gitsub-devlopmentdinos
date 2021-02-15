@@ -1,0 +1,220 @@
+body {
+  height: auto;
+  width: 100%;
+  padding: 10px;
+  background-color: #171616;
+  color: #b0abab;
+}
+/* Overview Page Start */
+.master-container {
+  width: 100%;
+  height: 100%;
+}
+
+.left-container {
+  width: 25%;
+  height: auto;
+}
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0;
+  padding: 10px;
+  height: 100vh;
+  width: 100%;
+  background-color: #171616;
+  border: 0.25px solid #a0abaa;
+  border-radius: 6px;
+  color: #babdbc;
+}
+.right-container {
+  width: 100%;
+  height: 100%;
+  justify-content: end;
+}
+.data-container {
+  padding: 0 !important;
+  height: auto;
+}
+.form-container {
+  height: 40%;
+}
+.dino-logo {
+  background-color: cornsilk;
+  border: 3px solid grey;
+  height: 300px;
+  width: 70%;
+  border-radius: 50%;
+  margin: 30px auto;
+  cursor: pointer;
+}
+.btn-group {
+  width: 100%;
+}
+.profile-btn {
+  background-color: #b0abab;
+  width: 10% !important;
+}
+.profile-links {
+  padding: 0;
+  margin: 30px 0 0 0;
+  height: auto;
+}
+.profile-links li {
+  list-style: none;
+  margin: 0;
+  height: 40px;
+  line-height: 1;
+  padding: 10px;
+}
+.profile-followers div {
+  height: 30px;
+}
+.profile-followers li {
+  font-size: 15px;
+  list-style-type: none;
+  display: inline-block;
+  margin: 0 5px;
+}
+.profile-followers .material-icons {
+  text-align: center;
+  margin: 0;
+  width: 20px;
+  display: inline-block;
+  height: 20px;
+}
+.profile-followers ul {
+  height: 20px;
+  padding: 30px 5px;
+}
+#pinnedRepos {
+  padding: 50px;
+}
+.pinned-repo-card {
+  width: 48%;
+}
+.tag-checkboxes {
+  display: flex;
+  flex-direction: row;
+  max-height: 125px;
+}
+.form-check {
+  margin: 0 10px;
+  width: auto;
+}
+.checkbox-container {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+}
+.hidden {
+  display: none;
+}
+.delete-btn {
+  margin-left: auto;
+}
+.about-me {
+  border-radius: 5px;
+  border: 1px #a0abaa solid;
+}
+.aboutme-bottom {
+  width: 60%;
+}
+a {
+  text-decoration: none;
+}
+.aboutme-background-image-container {
+  width: 100%;
+  height: 20em;
+  background-image: url("./hunter_v1.0.jpg");
+  background-position: right;
+  background-repeat: no-repeat;
+}
+.badge {
+  border: 1px solid grey;
+  background-color: royalblue;
+  max-width: 40px;
+  color: whitesmoke;
+}
+.navbar {
+  background-color: #212020;
+  color: #b0abab;
+  border: 0.25px solid #a0abaa;
+}
+
+.nav-link {
+  color: #b0abab;
+}
+.card-header {
+  background-color: #212020;
+  color: #1ea0f7;
+}
+
+.card-body {
+  background-color: #212020;
+  color: #b0abab;
+}
+
+.repo-btn {
+  background-color: #212020;
+  color: #1ea0f7;
+}
+
+.card-body button {
+  background-color: #212020;
+  color: #1ea0f7;
+}
+.star {
+  position: absolute;
+  color: #1ea0f7;
+  right: 0;
+  cursor: pointer;
+  color: gold;
+  margin-right: 5px;
+}
+ul .material-icons {
+  color: white;
+  font-size: 18px;
+}
+.material-icons-profile {
+  color: white;
+  font-size: 20px;
+  margin-right: 8px;
+}
+.profile-star {
+  color: white;
+  align-self: flex-end;
+  justify-self: end;
+}
+
+/* Projects Page search and sort */
+.search-container {
+  position: relative;
+}
+.form-control {
+  width: 100%;
+}
+
+#package-form {
+  background-color: #171616;
+  color: white; 
+}
+/* Overview Page End */
+footer {
+  margin: 40px 0;
+}
+.logo-image-container {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  height: 5%;
+  width: 100px;
+}
+.logo-image-container a {
+  width: 50px;
+}
+.gitsub-logo {
+  border-radius: 50%;
+  height: 100%;
+  width: 90%;
+};

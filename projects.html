@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+    crossorigin="anonymous"
+  />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="main.css" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitSub | Projects</title>
+</head>
+<body>
+<div class="master-container d-flex flex-row flex-nowrap">
+  <div class="left-container">
+    <div class="profile-container" id="profile-container">
+    </div>
+  </div>
+  <div class="right-container">
+    <nav class="navbargit navbar m-3 text-light">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="./index.html">Overview</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./repositories.html">Repositories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./projects.html">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./packages.html">Packages</a>
+        </li>
+      </ul>
+      <div class="logo-image-container"><a href="#index.html"><img class="gitsub-logo" src="./img/dinoslogo.jpg" alt=""></a></div>
+    </nav>
+    
+    <!-- <div class="search-container m-3 fa fa-search" id="projectSearch">
+      <input type="text" name="projectSearch" id="projSearch"
+        placeholder="Search your projects"/>
+    </div> -->
+    <div class="searchFeatures d-flex justify-content-between">
+      <div class="search-container m-3 w-25 d-flex" id="projectSearch">
+        <input type="text" class="form-control" name="projectSearch" id="projSearch" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Search your projects">
+        <span class="material-icons fs-1">search</span>
+      </div>
+      <div class="dropdown m-3 d-flex">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Sort projects
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><button class="dropdown-item" id="sortName">By Name</button></li>
+          <li><button class="dropdown-item" id="sortTimeByOldest">By Time Created (Precambrian first)</button></li>
+          <li><button class="dropdown-item" id="sortTimeByNewest">By Time Created (Holocene first)</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="data-container m-3 d-flex flex-column flex-nowrap" id="projectCards"></div>
+      <!-- Card classes for data containers to be utilized in JS Builders -->
+
+    <div class="form-container m-3">
+      <h4>Create a new project</h4>
+      <p>Stay organized to keep your work on track and on schedule.</p>
+      <hr />
+      <form id="projectsForm">
+        <div class="mb-3">
+          <label for="formGroupExampleInput" class="form-label">Project Board Name</label>
+          <input type="text" class="form-control w-50" id="projectName" placeholder="Awesome project name" required>
+        </div>
+        <div class="mb-3">
+          <label for="FormControlTextarea1">Project Description (Optional)</label>
+          <textarea class="form-control" id="projectDescription" rows="3"></textarea>
+        </div>
+        <hr />
+        <button type="submit" class="btn btn-primary">Create Project</button>
+      </form>
+    </div>
+  </div>
+</div>
+<footer>
+  <ul class="d-flex flex-row justify-content-evenly">
+    <li>&#169 Development Dinos 2021</li>
+    <li><a href="https://github.com/">GitHub</a></li>
+    <li><a href="https://github.com/nss-evening-cohort-14/gitsub-devlopmentdinos">Development Dino Repo</a></li>
+    <li><a href="https://github.com/nss-evening-cohort-14/gitsub-devlopmentdinos/blob/main/instructions.md">GutSub Instructions</a></li>
+    <li><a href="http://nashvillesoftwareschool.com/">Nashville Software School</a></li>
+  </ul>
+</footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+    crossorigin="anonymous"
+  />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="main.css" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitSub | Packages</title>
+</head>
+<body>
+<div class="master-container d-flex flex-row flex-nowrap">
+  <div class="left-container">
+    <div class="profile-container" id="profile-container"></div>
+  </div>
+  <div class="right-container">
+    <nav class="navbar m-3 text-light">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="./index.html">Overview</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./repositories.html">Repositories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./projects.html">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./packages.html">Packages</a>
+        </li>
+      </ul>
+      <div class="logo-image-container"><a href="#index.html"><img class="gitsub-logo" src="./img/dinoslogo.jpg" alt=""></a></div>
+    </nav>
+   
+    <!--Package Search--> 
+    <div class="search-container m-3" id="packageSearch">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" id="searchPack" fill="currentColor"  class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+      </svg>
+      <input type="text" name="projectSearch" id="packSearch"
+        placeholder="Search your packages"/>
+    </div>
+
+    <!--Div for Cards to Create To-->
+    <div id="packageCard" class="data-container m-3 d-flex flex-column flex-nowrap"></div>
+    
+    
+   <!--PACKAGES FORM-->
+            <div class="form-container m-3">
+              <h5>Add a New Package</h5>
+              <hr />
+              <form class="form-control" id="package-form">  
+              <label for="Add Package" class="form-label">Add Package</label>
+              <input type="text" id="package-add" required>
+              <div class="form-group">
+                <label for="FormControlTextarea1">Add Description (Optional)</label>
+                <textarea class="form-control" id="option-package" rows="3"></textarea>
+              </div>
+              <br />
+              <button type="submit" class="btn btn-primary" id="add-package">Add Package</button>
+            </form>
+            </div>
+   <!--End Packages Form -->
+    
+  </div>
+</div>
+<footer>
+  <ul class="d-flex flex-row justify-content-evenly">
+    <li>&#169 Development Dinos 2021</li>
+    <li><a href="https://github.com/">GitHub</a></li>
+    <li><a href="https://github.com/nss-evening-cohort-14/gitsub-devlopmentdinos">Development Dino Repo</a></li>
+    <li><a href="https://github.com/nss-evening-cohort-14/gitsub-devlopmentdinos/blob/main/instructions.md">GutSub Instructions</a></li>
+    <li><a href="http://nashvillesoftwareschool.com/">Nashville Software School</a></li>
+  </ul>
+</footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+  </body>
+</html>
