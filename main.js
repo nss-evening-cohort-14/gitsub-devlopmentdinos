@@ -162,7 +162,7 @@ const aboutMeOpen = (e) => {
   <hr>
   <div class="card about-me-main mb-3 p-3">
     <div class="aboutme-background-image-container card-img-top p-5">
-      <h2 class="fs-1">Dino Dinosaurus</h2>
+      <h2 class="fs-1 p-1">Dino Dinosaurus</h2>
       <h4 class="text-muted">Software Engineer, Content Creator, Prehistoric Lizard</h4>
     </div>
     <div class="card-body">
@@ -215,7 +215,7 @@ const pinnedRepoBuilder = (array) => {
     element.repos.forEach((arg, i) => {
       if (arg.isPinned) {
         domString += ` <div class="card pinned-repo-card mt-4" id="${i}">
-                          <div class="card-header d-flex pinned-repo-card-header">${arg.repoName} <button type="submit" class="btn btn-outline-danger delete-btn" id="${i}">X</button></div>
+                          <div class="card-header d-flex pinned-repo-card-header">${arg.repoName} <button type="submit" class="btn delete-btn text-light" id="${i}">&#10006;</button></div>
                           <div class="card-body">
                            <p class="card-text">${arg.repoDescription}</p>
                            <button type="button" class="btn btn-secondary tag">${arg.repoTags[0]}</button>
