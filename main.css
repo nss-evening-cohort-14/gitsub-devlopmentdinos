@@ -198,3 +198,18 @@ ul .material-icons {
 footer {
   margin: 40px 0;
 }
+.logo-image-container {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  height: 5%;
+  width: 100px;
+}
+.logo-image-container a {
+  width: 50px;
+}
+.gitsub-logo {
+  border-radius: 50%;
+  height: 100%;
+  width: 90%;
+};

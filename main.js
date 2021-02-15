@@ -105,7 +105,7 @@ const profileCardBuilder = () => {
   let domString = `
   <img
   class="dino-logo img-fluid"
-  src="./dinoprofile.png"
+  src="./img/dinoprofile.png"
   alt="picture of a dinosaur"
   id="aboutMeOpen"
 />
@@ -171,7 +171,7 @@ const aboutMeOpen = (e) => {
     <div class="mb-3 aboutme-bottom">
       <div class="row g-0">
         <div class="col-md-4">
-        <img src="./klipartz.com (1).png" style="width: 250px; height: 200px;" alt="chibi-rex" class="me-5">
+        <img src="./img/klipartz.com (1).png" style="width: 250px; height: 200px;" alt="chibi-rex" class="me-5">
         </div>
         <div class="col-md-8">
           <div class="card-body">
