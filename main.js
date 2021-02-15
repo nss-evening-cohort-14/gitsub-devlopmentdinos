@@ -4,27 +4,27 @@ const users = [
     userName: "Dino Dinosaurus",
     repos: [
       {
-        repoName: "Repo 1",
-        repoDescription: "Repo Description",
-        repoTags: ["Tag 2", "Tag 3"],
+        repoName: "ColorFlipper",
+        repoDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        repoTags: ["Javascript", "Learning"],
         isPinned: true,
       },
       {
-        repoName: "Repo 2",
-        repoDescription: "2nd Description",
-        repoTags: ["Tag Button 1", "Tag Button 2"],
+        repoName: "SortingHat",
+        repoDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        repoTags: ["Application", "Learning", "Classwork"],
         isPinned: true,
       },
       {
-        repoName: "Repo 3",
-        repoDescription: "3rd descript",
-        repoTags: ["Tag 1", "Tag 2"],
+        repoName: "pet-adoption",
+        repoDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        repoTags: ["Javascript", "Bootstrap"],
         isPinned: false,
       },
       {
-        repoName: "Repo 4",
-        repoDescription: "4th descript",
-        repoTags: ["Tag 1", "Tag 2"],
+        repoName: "pieBuilder",
+        repoDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        repoTags: ["Learning", "Bootstrap", "Fun", "CSS"],
         isPinned: false,
       },
     ],
@@ -57,20 +57,20 @@ const users = [
     ],
     packages: [
       {
-        packageName: 'JavaScript',
-        packageDescription: 'Node Package Manager'
+        packageName: "JavaScript",
+        packageDescription: "Node Package Manager",
       },
       {
-        packageName: 'Ruby',
-        packageDescription: 'RubyGems Pacakage Manager'
+        packageName: "Ruby",
+        packageDescription: "RubyGems Pacakage Manager",
       },
       {
-        packageName: 'Java',
-        packageDescription: 'Gradle build Automation Tool for Java'
+        packageName: "Java",
+        packageDescription: "Gradle build Automation Tool for Java",
       },
       {
-        packageName: '.NET',
-        packageDescription: 'NuGet Package Management for .NET'
+        packageName: ".NET",
+        packageDescription: "NuGet Package Management for .NET",
       },
     ],
   },
@@ -105,7 +105,7 @@ const profileCardBuilder = () => {
   let domString = `
   <img
   class="dino-logo img-fluid"
-  src="./dinoslogo.jpg"
+  src="./img/dinoprofile.png"
   alt="picture of a dinosaur"
   id="aboutMeOpen"
 />
@@ -119,29 +119,33 @@ const profileCardBuilder = () => {
   <button class="btn btn-primary m-1 profile-btn" type="submit">Share</button>
   <button class="btn btn-primary m-1 profile-btn" type="submit">Like</button>
 </div>
+<div class="profile-followers p-2 d-flex flex-row justify-content-evenly align-items-flex-end">
+<div>1.5b <span class="text-muted">followers</span></div>
+<b>&middot;</b>
+<div>324 <span class="text-muted">following</span></div>
+<b>&middot;</b>
+<div class="text-center"><span class="material-icons profile-star">star_border</span></div>47k
+</div>
 <ul class="profile-links">
   <li>
-    <img
-      class="icon-image"
-      src="./iconfinder_location_115718.png"
-      alt=""
-    />Pangea, Earth
+  <span class="material-icons material-icons-profile">
+  location_on
+  </span>Pangea, Earth
   </li>
   <li>
-    <img
-      class="icon-image"
-      src="./iconfinder_mail_115714.png"
-      alt=""
-    />D1n0boi74@paleogeographic.mail
+  <span class="material-icons material-icons-profile">
+  email
+  </span>D1n0boi74@paleo.mail
   </li>
   <li>
-    <img
-      class="icon-image"
-      src="./iconfinder_Dinosaur_367624.png"
-      alt=""
-    />Genus: Tyrannosaurus
+  <span class="material-icons material-icons-profile">
+  verified
+  </span> 
+  Tyrannosaurus
   </li>
 </ul>
+<hr>
+<span class="badge">PRO</span>
   `;
   printToDom("#profile-container", domString);
 };
@@ -167,7 +171,7 @@ const aboutMeOpen = (e) => {
     <div class="mb-3 aboutme-bottom">
       <div class="row g-0">
         <div class="col-md-4">
-        <img src="./klipartz.com (1).png" style="width: 250px; height: 200px;" alt="chibi-rex" class="me-5">
+        <img src="./img/klipartz.com (1).png" style="width: 250px; height: 200px;" alt="chibi-rex" class="me-5">
         </div>
         <div class="col-md-8">
           <div class="card-body">
@@ -244,8 +248,8 @@ const pinnedRepoBuilder = (array) => {
 // Function build list of repos
 
 const repoBuilders = (user) => {
-  let domString = '';
-  user.forEach(element => {
+  let domString = "";
+  user.forEach((element) => {
     element.repos.forEach((taco, i) => {
       domString += `<div class="card">
       <div class="card-header repo-ch d-flex">
@@ -269,7 +273,6 @@ const repoBuilders = (user) => {
         repoTag[i].classList.add("hidden");
       }
     }
-
   });
 };
 // ********** END **********
@@ -479,15 +482,15 @@ const newRepoForm = (e) => {
   repoBuilders(users);
 
   // Reset the form //
-  document.querySelector('form').reset();
+  document.querySelector("form").reset();
   repoStar();
 };
 
 // Repos Searchbar Builder Function
 const repoSearchBuilder = (taco) => {
-let newDomString = '';
-taco.forEach((element, i) => {
-  newDomString += `<div class="card">
+  let newDomString = "";
+  taco.forEach((element, i) => {
+    newDomString += `<div class="card">
   <div class="card-header repo-ch">
   <span class="material-icons align-items-end star" id="star${i}">star_border</span>
   ${element.repoName}
@@ -509,7 +512,7 @@ taco.forEach((element, i) => {
     }
   }
 };
-    
+
 // Function to search and filter through repos
 const repoSearch = (e) => {
   const searchResult = e.target.value.toLowerCase();
@@ -519,29 +522,29 @@ const repoSearch = (e) => {
       repo.repoDescription.toLowerCase().includes(searchResult)
     );
   });
-  repoSearchBuilder(filteredRepos)
+  repoSearchBuilder(filteredRepos);
   repoStar();
-}
+};
 
 // Function to target the Repo Form Star
 const repoStar = () => {
-  const repoStarId = document.querySelectorAll('.material-icons');
+  const repoStarId = document.querySelectorAll(".material-icons");
   for (let i = 0; i < repoStarId.length; i++) {
-    repoStarId[i].addEventListener('click', function() {
-      if (repoStarId[i].innerHTML === 'star_border') {
-        repoStarId[i].innerHTML = 'star'
+    repoStarId[i].addEventListener("click", function () {
+      if (repoStarId[i].innerHTML === "star_border") {
+        repoStarId[i].innerHTML = "star";
       } else {
-        repoStarId[i].innerHTML = 'star_border'
+        repoStarId[i].innerHTML = "star_border";
       }
-    })
-  };
-}
+    });
+  }
+};
 // Search Packages
 const searchPackages = (e) => {
-  let domString = '';
+  let domString = "";
   const packArray = [];
   const searchCriteria = e.target.value.toLowerCase();
-  const filterPackages = users[0].packages.filter( package => {
+  const filterPackages = users[0].packages.filter((package) => {
     return (
       package.packageName.toLowerCase().includes(searchCriteria) ||
       package.packageDescription.toLowerCase().includes(searchCriteria)
@@ -551,15 +554,15 @@ const searchPackages = (e) => {
   packArray.push(filterPackages);
   packArray.forEach((element) => {
     for (let i = 0; i < element.length; i++)
-    domString += `<div class="card border-dark mb-3" style="width: 25rem">
+      domString += `<div class="card border-dark mb-3" style="width: 25rem">
     <div class="card-header">${element[i].packageName}</div>
     <div class="card-body">
     <p class="card-text">${element[i].packageDescription}</p>
     <button type="button" class="btn btn-secondary">Delete</button>
     </div>
  </div>`;
-  })
-printToDom('#packageCard', domString);
+  });
+  printToDom("#packageCard", domString);
 };
 
 // Get Package Form Info
@@ -596,11 +599,17 @@ const deletePackage = (e) => {
 // *** Event Listeners *** //
 
 // Package Event Listener
-  const handleButtonPackages = () => {
-    document.querySelector('#package-form').addEventListener('submit', packageForm);
-    document.querySelector('#packageCard').addEventListener('click', deletePackage);
-    document.querySelector('#packSearch').addEventListener('keyup', searchPackages);
-  };
+const handleButtonPackages = () => {
+  document
+    .querySelector("#package-form")
+    .addEventListener("submit", packageForm);
+  document
+    .querySelector("#packageCard")
+    .addEventListener("click", deletePackage);
+  document
+    .querySelector("#packSearch")
+    .addEventListener("keyup", searchPackages);
+};
 
 // Index Event Listener //
 const handleButtonEventsIndex = () => {
@@ -610,13 +619,13 @@ const handleButtonEventsIndex = () => {
   document
     .querySelector("#pinnedReposForm")
     .addEventListener("submit", getPinnedRepoFormInfo);
-  // document.querySelector("#aboutMeOpen").addEventListener("click", aboutMeOpen);
+  document.querySelector("#aboutMeOpen").addEventListener("click", aboutMeOpen);
 };
 // Repos Event Listener //
 const handleButtonEventsRepos = () => {
-  document.querySelector('#reposForm').addEventListener('submit', newRepoForm);
-  document.querySelector('#searchBar').addEventListener('keyup', repoSearch);
-};  
+  document.querySelector("#reposForm").addEventListener("submit", newRepoForm);
+  document.querySelector("#searchBar").addEventListener("keyup", repoSearch);
+};
 
 // Projects Event Listener //
 const handleButtonEventsProjects = () => {
@@ -641,7 +650,7 @@ const init = () => {
     handleButtonEventsRepos();
     profileCardBuilder();
     repoStar();
-    } else if (window.location.pathname === '/projects.html') {
+  } else if (window.location.pathname === "/projects.html") {
     projectBuilder(users);
     handleButtonEventsProjects();
     profileCardBuilder();
