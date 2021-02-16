@@ -221,6 +221,8 @@ const pinnedRepoBuilder = (array) => {
                            <button type="button" class="btn btn-secondary tag">${arg.repoTags[0]}</button>
                            <button type="button" class="btn btn-secondary tag">${arg.repoTags[1]}</button>
                            <button type="button" class="btn btn-secondary tag">${arg.repoTags[2]}</button>
+                           <button type="button" class="btn btn-secondary tag">${arg.repoTags[3]}</button>
+                           <button type="button" class="btn btn-secondary tag">${arg.repoTags[4]}</button>
                         </div>
                       </div>
                       `;
