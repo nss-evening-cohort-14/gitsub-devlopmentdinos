@@ -45,14 +45,28 @@ Our user is able to quickly and efficiently keep track of version controlling, p
 
 ### Screenshots
 Overview
+![](./img/overview.png)
+Overview - Aboutme
+![](./img/overview-aboutme.png)
 Packages
+![](./img/packages.png)
 Projects
+![](./img/projects.png)
 Repositories
+![](./img/repositories.png)
 
 ### Loom Walkthroughs
-Overview
-Packages
-Projects
-Repositories
+
+- [Overview]()
+- [Packages](https://www.loom.com/share/1dc73039f1f14945a4d3e8e39f35f83f)
+
+- [Projects](https://www.loom.com/share/5915fbcf2cd148fdbfec61c0bbab0200)
+
+- [Repositories](https://www.loom.com/share/4d57900dcb0c4f08bda6227ddb6c47de)
 
 ### Contributors
+
+- [Jesse Robinson](https://github.com/jrobinson0529) - Overview Page
+- [Chris Meffley](https://github.com/cmeffley) - Packages Page
+- [Casey Walker](https://github.com/caseywalker) - Repositories Page
+- [Tad Sekeres](https://github.com/tsekeres) - Projects Page
